@@ -4,6 +4,7 @@ import { BrainCircuit, CheckCircle2, Mic, Sparkles, TimerReset } from "lucide-re
 import { Button } from "@/components/ui/button";
 import BrandLogo from "@/components/BrandLogo";
 import Footer from "@/app/dashboard/_components/Footer";
+import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function Home() {
   const featureList = [
@@ -38,12 +39,20 @@ export default function Home() {
       <header className="page-shell flex items-center justify-between py-6">
         <BrandLogo showTagline />
         <div className="flex items-center gap-2">
-          <Link href="/sign-in">
-            <Button variant="ghost">Sign In</Button>
-          </Link>
-          <Link href="/dashboard">
-            <Button className="rounded-full px-6">Start Practicing</Button>
-          </Link>
+          <SignedOut>
+            <Link href="/sign-in">
+              <Button variant="ghost">Sign In</Button>
+            </Link>
+            <Link href="/dashboard">
+              <Button className="rounded-full px-6">Start Practicing</Button>
+            </Link>
+          </SignedOut>
+          <SignedIn>
+            <Link href="/dashboard">
+              <Button className="rounded-full px-6">Go to Dashboard</Button>
+            </Link>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
         </div>
       </header>
 
@@ -56,7 +65,7 @@ export default function Home() {
                 Faster interview preparation
               </div>
               <h1 className="text-3xl font-bold leading-tight text-slate-900 md:text-5xl">
-                Land your next role with <span className="brand-highlight">KaryerA</span>I
+                Land your next role with Karyer<span className="brand-highlight">A</span>I
               </h1>
               <p className="text-base text-slate-600 md:text-lg">
                 Build confidence through AI-powered mock interviews, spoken responses,
@@ -68,11 +77,13 @@ export default function Home() {
                     Try KaryerAI
                   </Button>
                 </Link>
-                <Link href="/sign-up">
-                  <Button variant="outline" size="lg" className="rounded-full px-8">
-                    Create account
-                  </Button>
-                </Link>
+                <SignedOut>
+                  <Link href="/sign-up">
+                    <Button variant="outline" size="lg" className="rounded-full px-8">
+                      Create account
+                    </Button>
+                  </Link>
+                </SignedOut>
               </div>
             </div>
             <div className="relative mx-auto w-full max-w-lg">
