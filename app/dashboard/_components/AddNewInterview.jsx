@@ -58,7 +58,7 @@ function AddNewInterview() {
         jobDesc,
         jobExperience,
         createdBy: user?.primaryEmailAddress?.emailAddress,
-        createdAt: moment().format("DD-MM-yyyy"),
+        createdAt: moment().format("DD-MM-YYYY"),
       })
         .returning({ mockId: MockInterview.mockId });
 

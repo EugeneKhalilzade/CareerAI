@@ -11,12 +11,14 @@ function Header() {
   const navItems = [
     { href: "/", label: "Home" },
     { href: "/dashboard", label: "Dashboard" },
+    { href: "/dashboard/calendar", label: "Calendar" },
+    { href: "/dashboard/peer", label: "Live Peer Practice" },
   ];
 
   return (
     <header className="sticky top-0 z-20 border-b bg-white/85 backdrop-blur">
       <div className="page-shell flex h-20 items-center justify-between">
-        <BrandLogo href="/dashboard" />
+        <BrandLogo href="/dashboard" showTagline />
         <nav className="hidden items-center gap-6 md:flex">
           {navItems.map((item) => (
             <Link

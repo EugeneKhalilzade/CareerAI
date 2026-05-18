@@ -2,6 +2,7 @@ import React from "react";
 import { Sparkles, Target } from "lucide-react";
 import AddNewInterview from "./_components/AddNewInterview";
 import Interviewlist from "./_components/Interviewlist";
+import WeeklyPerformanceChart from "./_components/WeeklyPerformanceChart";
 
 function Dashboard() {
   return (
@@ -17,6 +18,8 @@ function Dashboard() {
           faster with guided AI feedback.
         </p>
       </section>
+
+      <WeeklyPerformanceChart />
 
       <section id="new-interview" className="space-y-4">
         <div className="flex items-center gap-2 text-slate-900">

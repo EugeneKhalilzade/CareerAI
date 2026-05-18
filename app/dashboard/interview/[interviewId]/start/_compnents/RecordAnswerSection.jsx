@@ -33,10 +33,9 @@ function RecordAnswerSection({
     continuous: true,
     useLegacyResults: false,
   });
-  if (error) {
-    toast(error);
-    return;
-  }
+  useEffect(() => {
+    if (error) toast.error(error);
+  }, [error]);
 
   useEffect(() => {
     const latestTranscript = results?.[results.length - 1]?.transcript;
@@ -91,7 +90,7 @@ function RecordAnswerSection({
       feedback: JsonFeedbackResp?.feedback,
       rating: JsonFeedbackResp?.rating,
       userEmail: user?.primaryEmailAddress?.emailAddress,
-      createdAt: moment().format("DD-MM-yyyy"),
+      createdAt: moment().format("DD-MM-YYYY"),
     });
 
     if (resp) {
