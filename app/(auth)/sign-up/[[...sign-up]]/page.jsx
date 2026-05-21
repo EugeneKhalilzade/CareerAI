@@ -19,7 +19,7 @@ export default function Page() {
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#6F49D8] text-white shadow-lg shadow-[#6F49D8]/20">
                   <Activity className="h-5 w-5" />
                 </span>
-                KaryerAI
+                    CareerAI
               </Link>
             </div>
 
@@ -27,7 +27,7 @@ export default function Page() {
               Create your <span className="text-[#6F49D8]">account</span>
             </h1>
             <p className="mt-3 text-sm text-slate-600">
-              Join KaryerAI and start practicing role-based interviews today.
+                Join CareerAI and start practicing role-based interviews today.
             </p>
 
             <div className="mt-7 overflow-hidden rounded-2xl bg-white shadow-2xl shadow-teal-950/10 ring-1 ring-teal-100">
@@ -100,7 +100,7 @@ export default function Page() {
 
             <div className="mt-12 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-white/70">
               <ShieldCheck className="h-4 w-4" />
-              Secured by KaryerAI
+                Secured by CareerAI
             </div>
           </div>
         </aside>

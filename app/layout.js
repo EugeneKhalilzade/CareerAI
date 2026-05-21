@@ -10,8 +10,8 @@ const jakarta = Plus_Jakarta_Sans({
 });
 
 export const metadata = {
-  title: "KaryerAI",
-  description: "KaryerAI helps you practice smarter with AI-powered mock interviews.",
+  title: "CareerAI",
+  description: "CareerAI helps you practice smarter with AI-powered mock interviews.",
 };
 
 export default function RootLayout({ children }) {

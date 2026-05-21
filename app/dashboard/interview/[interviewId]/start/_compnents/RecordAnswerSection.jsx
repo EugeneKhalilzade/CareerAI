@@ -16,6 +16,8 @@ function RecordAnswerSection({
   activeQuestionIndex,
   mockInterViewQuestion,
   interviewData,
+  plan = "free",
+  isProPreview = false,
 }) {
   const questions = Array.isArray(mockInterViewQuestion) ? mockInterViewQuestion : [];
   const activeQuestion = questions[activeQuestionIndex];
@@ -74,7 +76,10 @@ function RecordAnswerSection({
     }
 
     setLoading(true);
-    const feedbackPromt = `Question: ${activeQuestion.question}, User Answer: ${userAnswer}. Based on the question and the user's answer, please provide a rating 1 to 10 for the answer and feedback in the form of areas for improvement, if any. The feedback should in JSON format only nothing else field should be rating and feeback only, in just 3 to 5 lines.`;
+    const feedbackPromt =
+      plan === "free" && !isProPreview
+        ? `Question: ${activeQuestion.question}, User Answer: ${userAnswer}. The user is on the free plan, so do not generate detailed analysis. Return JSON only with fields rating and feedback. Set rating to "0" and make feedback a short general summary without score breakdown, strengths, weaknesses, ideal answer tips, or detailed analysis.`
+        : `Question: ${activeQuestion.question}, User Answer: ${userAnswer}. Based on the question and the user's answer, please provide a rating 1 to 10 and detailed feedback with strengths, weaknesses, improvement tips, and ideal answer guidance. The feedback should be in JSON format only nothing else field should be rating and feedback only.`;
     const result = await chatSession.sendMessage(feedbackPromt);
     const mockJsonResp = result.response
       .text()

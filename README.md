@@ -1,8 +1,8 @@
-# KaryerAI
+# CareerAI
 
 **Practice smarter, interview better.** 🚀
 
-KaryerAI is an AI-powered mock interview platform designed to help job seekers prepare for technical and behavioral interviews. Answer questions out loud, get instant AI feedback, and improve your interview performance with personalized guidance.
+CareerAI is an AI-powered mock interview platform designed to help job seekers prepare for technical and behavioral interviews. Answer questions out loud, get instant AI feedback, and improve your interview performance with personalized guidance.
 
 ---
 
@@ -91,7 +91,7 @@ Visit **http://localhost:3000** (or 3001 if 3000 is in use) in your browser.
 ### 2. **Create an Interview**
    - Go to Dashboard → "Create a new interview"
    - Fill in your target role, tech stack, and experience level
-   - KaryerAI generates personalized questions
+- CareerAI generates personalized questions
 
 ### 3. **Practice Live**
    - Click "Start Interview" on your interview
@@ -156,7 +156,7 @@ ai-mock-interview-master/
 ### Key Utilities
 - `.page-shell` – Centered container with responsive padding
 - `.glass-card` – Modern frosted glass effect card
-- `.brand-highlight` – Gradient text for the "A" in KaryerAI
+- `.brand-highlight` – Gradient text for the "A" in CareerAI
 
 ---
 

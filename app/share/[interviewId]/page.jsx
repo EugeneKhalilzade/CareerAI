@@ -146,7 +146,7 @@ export default function SharePage({ params }) {
           href="/"
           className="mt-2 inline-flex items-center gap-1.5 rounded-full bg-violet-600 px-5 py-2 text-sm font-semibold text-white hover:bg-violet-700"
         >
-          Go to KaryerAI <ArrowRight className="h-4 w-4" />
+            Go to CareerAI <ArrowRight className="h-4 w-4" />
         </Link>
       </div>
     );
@@ -194,7 +194,7 @@ export default function SharePage({ params }) {
               href="/"
               className="flex items-center gap-1.5 rounded-full bg-violet-600 px-4 py-1.5 text-sm font-semibold text-white transition hover:bg-violet-700"
             >
-              Try KaryerAI <ArrowRight className="h-3.5 w-3.5" />
+                  Try CareerAI <ArrowRight className="h-3.5 w-3.5" />
             </Link>
           </div>
         </div>
@@ -281,7 +281,7 @@ export default function SharePage({ params }) {
             Ready to practice your own interview?
           </h2>
           <p className="mt-1 text-sm text-slate-600">
-            KaryerAI generates tailored mock interviews and gives you instant AI feedback — for free.
+            CareerAI generates tailored mock interviews and gives you instant AI feedback — for free.
           </p>
           <Link
             href="/"
@@ -292,7 +292,7 @@ export default function SharePage({ params }) {
         </div>
 
         <p className="text-center text-xs text-slate-400">
-          Shared via <strong>KaryerAI</strong> · No personal data is exposed on this page
+              Shared via <strong>CareerAI</strong> · No personal data is exposed on this page
         </p>
       </main>
     </div>

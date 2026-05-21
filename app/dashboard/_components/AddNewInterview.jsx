@@ -95,7 +95,7 @@ function AddNewInterview() {
               <form onSubmit={onSubmit}>
                 <div className="space-y-4">
                   <h2 className="text-sm text-slate-600">
-                    Add your target role details so KaryerAI can generate relevant
+                    Add your target role details so CareerAI can generate relevant
                     questions and expected answers.
                   </h2>
 

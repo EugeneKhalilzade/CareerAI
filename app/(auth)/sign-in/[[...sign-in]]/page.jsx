@@ -28,7 +28,7 @@ export default function Page() {
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#6F49D8] text-white shadow-lg shadow-[#6F49D8]/20">
                   <Activity className="h-5 w-5" />
                 </span>
-                KaryerAI
+                    CareerAI
               </Link>
             </div>
 
@@ -57,7 +57,7 @@ export default function Page() {
               />
             </div>
             <p className="mt-6 text-center text-sm font-semibold text-slate-700">
-              New to KaryerAI?{" "}
+                  New to CareerAI?{" "}
               <Link href="/sign-up" className="text-slate-950 hover:underline">
                 Create an account
               </Link>
@@ -109,7 +109,7 @@ export default function Page() {
 
             <div className="mt-12 flex items-center gap-2 text-[11px] font-bold uppercase tracking-wide text-white/70">
               <ShieldCheck className="h-4 w-4" />
-              Secured by KaryerAI
+                Secured by CareerAI
             </div>
           </div>
         </aside>
