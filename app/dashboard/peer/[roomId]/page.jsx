@@ -83,7 +83,7 @@ export default function PeerRoom({ params }) {
       <div className="flex-1 rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-slate-900 relative">
         <JitsiMeeting
           domain="meet.jit.si"
-          roomName={`KaryerAI-Peer-${roomId}`}
+            roomName={`CareerAI-Peer-${roomId}`}
           configOverwrite={{
             startWithAudioMuted: false,
             startWithVideoMuted: false,

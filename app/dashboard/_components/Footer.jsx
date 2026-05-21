@@ -30,7 +30,7 @@ function Footer() {
         </div>
       </div>
       <p className="mt-6 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} KaryerAI. All rights reserved.
+            © {new Date().getFullYear()} CareerAI. All rights reserved.
       </p>
     </footer>
   );

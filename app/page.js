@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import BrandLogo from "@/components/BrandLogo";
 import Footer from "@/app/dashboard/_components/Footer";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import UpgradeBanner from "@/components/UpgradeBanner";
 
 export default function Home() {
   const featureList = [
@@ -56,6 +57,7 @@ export default function Home() {
           </SignedIn>
         </div>
       </header>
+      <UpgradeBanner />
 
       <main className="page-shell flex-1 space-y-6 pt-2 pb-12">
 
@@ -70,7 +72,7 @@ export default function Home() {
               <h1 className="text-5xl font-black leading-[1.1] tracking-tight text-slate-900 md:text-7xl">
                 Land your next role with{" "}
                 <span className="block bg-gradient-to-r from-[#0ABAB5] via-[#56DFCF] to-[#0ABAB5] bg-clip-text text-transparent drop-shadow-sm">
-                 KaryerAI
+                 CareerAI
                 </span>
               </h1>
               <p className="text-base text-slate-500 md:text-lg leading-relaxed">
@@ -83,7 +85,7 @@ export default function Home() {
                     size="lg"
                     className="rounded-full px-8 bg-[#0ABAB5] hover:bg-[#09a8a3] text-white font-semibold"
                   >
-                    Try KaryerAI
+                    Try CareerAI
                   </Button>
                 </Link>
                 <SignedOut>
@@ -136,7 +138,7 @@ export default function Home() {
               <h2 className="text-3xl font-extrabold text-slate-900">
                 How{" "}
                 <span className="bg-gradient-to-r from-[#0ABAB5] to-[#56DFCF] bg-clip-text text-transparent">
-                  KaryerAI
+                  CareerAI
                 </span>{" "}
                 works
               </h2>
