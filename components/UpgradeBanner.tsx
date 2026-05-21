@@ -13,6 +13,8 @@ function UpgradeBanner() {
   const [interviewCount, setInterviewCount] = useState(0);
   const [showPricingModal, setShowPricingModal] = useState(false);
   const plan = user?.publicMetadata?.plan || "free";
+  const limit = 5;
+  const percent = Math.min((interviewCount / limit) * 100, 100);
 
   useEffect(() => {
     if (user && plan === "free") {
@@ -37,15 +39,26 @@ function UpgradeBanner() {
         onClose={() => setShowPricingModal(false)}
         dismissible
       />
-      <div className="border-b border-teal-100 bg-[#FDF0F0]/95">
-        <div className="page-shell flex flex-col gap-3 py-3 text-sm sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-medium text-slate-700">
-            Free plan: {interviewCount}/5 interviews used. Upgrade for unlimited interviews and full analysis.
-          </p>
+      <div className="border-b border-slate-200/70 bg-white/90">
+        <div className="page-shell flex flex-col gap-4 py-4 text-sm sm:flex-row sm:items-center sm:justify-between">
+          <div className="space-y-2">
+            <p className="font-medium text-slate-700">
+              Free plan: {interviewCount}/{limit} interviews used. Upgrade for unlimited interviews and full analysis.
+            </p>
+            <div className="h-2 w-full rounded-full bg-slate-200/80">
+              <div
+                className="h-full rounded-full bg-gradient-to-r from-teal-500 to-cyan-500"
+                style={{ width: `${percent}%` }}
+              />
+            </div>
+            <p className="text-xs text-slate-500">
+              {Math.max(limit - interviewCount, 0)} interviews remaining this month.
+            </p>
+          </div>
           <button
             type="button"
             onClick={() => setShowPricingModal(true)}
-            className="inline-flex items-center gap-2 rounded-full bg-[#00BFA6] px-4 py-2 text-sm font-semibold text-white transition hover:opacity-90"
+            className="inline-flex items-center gap-2 rounded-full bg-slate-900 px-4 py-2 text-sm font-semibold text-white transition hover:bg-slate-800"
           >
             Upgrade to Pro
             <ArrowUpRight className="h-4 w-4" />

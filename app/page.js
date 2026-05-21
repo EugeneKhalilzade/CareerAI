@@ -42,14 +42,14 @@ export default function Home() {
               <Button variant="ghost">Sign In</Button>
             </Link>
             <Link href="/dashboard">
-              <Button className="rounded-full px-6 bg-[#0ABAB5] hover:bg-[#09a8a3] text-white">
+              <Button className="rounded-full px-6 bg-slate-900 hover:bg-slate-800 text-white">
                 Start Practicing
               </Button>
             </Link>
           </SignedOut>
           <SignedIn>
             <Link href="/dashboard">
-              <Button className="rounded-full px-6 bg-[#0ABAB5] hover:bg-[#09a8a3] text-white">
+              <Button className="rounded-full px-6 bg-slate-900 hover:bg-slate-800 text-white">
                 Go to Dashboard
               </Button>
             </Link>
@@ -65,13 +65,13 @@ export default function Home() {
         <section className="glass-card overflow-hidden p-8 md:p-12">
           <div className="grid items-center gap-10 md:grid-cols-2">
             <div className="space-y-6">
-              <div className="inline-flex items-center gap-2 rounded-full bg-[#0ABAB5]/10 px-3 py-1 text-xs font-semibold text-[#0ABAB5]">
+              <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-700">
                 <TimerReset className="h-4 w-4" />
                 Faster interview preparation
               </div>
               <h1 className="text-5xl font-black leading-[1.1] tracking-tight text-slate-900 md:text-7xl">
                 Land your next role with{" "}
-                <span className="block bg-gradient-to-r from-[#0ABAB5] via-[#56DFCF] to-[#0ABAB5] bg-clip-text text-transparent drop-shadow-sm">
+                <span className="block bg-gradient-to-r from-teal-500 via-cyan-500 to-blue-500 bg-clip-text text-transparent drop-shadow-sm">
                  CareerAI
                 </span>
               </h1>
@@ -83,7 +83,7 @@ export default function Home() {
                 <Link href="/dashboard">
                   <Button
                     size="lg"
-                    className="rounded-full px-8 bg-[#0ABAB5] hover:bg-[#09a8a3] text-white font-semibold"
+                    className="rounded-full px-8 bg-slate-900 hover:bg-slate-800 text-white font-semibold"
                   >
                     Try CareerAI
                   </Button>
@@ -93,7 +93,7 @@ export default function Home() {
                     <Button
                       variant="outline"
                       size="lg"
-                      className="rounded-full px-8 border-[#0ABAB5] text-[#0ABAB5] hover:bg-[#0ABAB5]/10"
+                      className="rounded-full px-8 border-slate-300 text-slate-900 hover:bg-slate-100"
                     >
                       Create account
                     </Button>

@@ -15,6 +15,7 @@ import { LoaderCircle, PlusCircle } from "lucide-react";
 import { db } from "@/utils/db";
 import { MockInterview } from "@/utils/schema";
 import { normalizeInterviewQuestions } from "@/utils/interviewQuestions";
+import { extractResumeText, normalizeResumeText, RESUME_SUPPORTED_EXTENSIONS } from "@/utils/resumeUtils";
 import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment/moment";
@@ -26,15 +27,36 @@ function AddNewInterview() {
   const [jobPosition, setJobPosition] = useState("");
   const [jobDesc, setJobDesc] = useState("");
   const [jobExperience, setJobExperience] = useState("");
+  const [resumeText, setResumeText] = useState("");
+  const [resumeFileName, setResumeFileName] = useState("");
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
   const route = useRouter();
+
+  const handleResumeUpload = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    setResumeFileName(file.name);
+    try {
+      const text = await extractResumeText(file, { maxChars: 6000 });
+      setResumeText(text);
+      toast.success("Resume loaded. You can edit it below.");
+    } catch (error) {
+      toast.error(error?.message || "Could not read that resume file.");
+    } finally {
+      event.target.value = "";
+    }
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const inputPrompt = `Generate ${process.env.NEXT_PUBLIC_INTERVIEW_QUESTION} interview questions and answers in JSON format based on the following: Job Position: ${jobPosition}, Job Description: ${jobDesc}, Years of Experience: ${jobExperience}. Only return JSON without additional text.`;
+    const normalizedResume = normalizeResumeText(resumeText, 6000);
+    const resumeContext = normalizedResume
+      ? `Candidate resume:\n${normalizedResume}\n\n`
+      : "";
+    const inputPrompt = `${resumeContext}Generate ${process.env.NEXT_PUBLIC_INTERVIEW_QUESTION} interview questions and answers in JSON format based on the following: Job Position: ${jobPosition}, Job Description: ${jobDesc}, Years of Experience: ${jobExperience}. Only return JSON without additional text.`;
     const result = await chatSession.sendMessage(inputPrompt);
     const MockJsonResp = result.response
       .text()
@@ -129,6 +151,25 @@ function AddNewInterview() {
                       min="0"
                       max="50"
                       required
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-slate-800">
+                      Resume (optional)
+                    </label>
+                    <Input
+                      type="file"
+                      accept={RESUME_SUPPORTED_EXTENSIONS}
+                      onChange={handleResumeUpload}
+                    />
+                    {resumeFileName ? (
+                      <p className="text-xs text-slate-500">Loaded: {resumeFileName}</p>
+                    ) : null}
+                    <Textarea
+                      value={resumeText}
+                      onChange={(event) => setResumeText(event.target.value)}
+                      placeholder="Paste your resume text here to personalize questions."
+                      rows={6}
                     />
                   </div>
                 </div>

@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Sparkles, Target } from "lucide-react";
 import AddNewInterview from "./_components/AddNewInterview";
 import Interviewlist from "./_components/Interviewlist";
+import ResumeTailor from "./_components/ResumeTailor";
 import WeeklyPerformanceChart from "./_components/WeeklyPerformanceChart";
 import PricingModal from "@/components/PricingModal";
 import { useUser } from "@clerk/nextjs";
@@ -67,13 +68,14 @@ function Dashboard() {
         </div>
         <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
           <AddNewInterview />
-          <div className="glass-card p-5">
-            <h3 className="font-semibold text-slate-900">Tips for better results</h3>
-            <p className="mt-2 text-sm leading-6 text-slate-600">
-              Add your exact role, key technologies, and realistic experience level.
-              This helps CareerAI generate questions that match your real interview loop.
-            </p>
-          </div>
+          <ResumeTailor />
+        </div>
+        <div className="glass-card p-5">
+          <h3 className="font-semibold text-slate-900">Tips for better results</h3>
+          <p className="mt-2 text-sm leading-6 text-slate-600">
+            Add your exact role, key technologies, and realistic experience level.
+            This helps CareerAI generate questions that match your real interview loop.
+          </p>
         </div>
       </section>
 
