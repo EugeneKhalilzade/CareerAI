@@ -54,7 +54,7 @@ const CustomTooltip = ({ active, payload, label }) => {
         <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
           {label}
         </p>
-        <p className="mt-1 text-2xl font-bold text-violet-600">
+        <p className="mt-1 text-2xl font-bold text-teal-600">
           {val !== null ? `${val} / 10` : "No data"}
         </p>
       </div>
@@ -141,12 +141,12 @@ function WeeklyPerformanceChart() {
   return (
     <section className="glass-card p-6 md:p-8 space-y-5">
       {/* Header */}
-      <div className="flex flex-wrap items-start justify-between gap-4">
-        <div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700">
-            <BarChart2 className="h-3.5 w-3.5" />
-            Weekly overview
-          </div>
+        <div className="flex flex-wrap items-start justify-between gap-4">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full bg-teal-100 px-3 py-1 text-xs font-semibold text-teal-700">
+              <BarChart2 className="h-3.5 w-3.5" />
+              Weekly overview
+            </div>
           <h2 className="mt-3 text-xl font-bold text-slate-900">
             Performance this week
           </h2>
@@ -157,12 +157,12 @@ function WeeklyPerformanceChart() {
 
         {/* Stats pills */}
         <div className="flex gap-3 flex-wrap">
-          <div className="rounded-xl border border-violet-100 bg-violet-50 px-4 py-3 text-center min-w-[90px]">
-            <p className="text-xs text-slate-500 font-medium">Avg score</p>
-            <p className="mt-0.5 text-2xl font-bold text-violet-600">
-              {loading ? "—" : avgScore !== null ? avgScore : "—"}
-            </p>
-          </div>
+            <div className="rounded-xl border border-teal-100 bg-teal-50 px-4 py-3 text-center min-w-[90px]">
+              <p className="text-xs text-slate-500 font-medium">Avg score</p>
+              <p className="mt-0.5 text-2xl font-bold text-teal-600">
+                {loading ? "—" : avgScore !== null ? avgScore : "—"}
+              </p>
+            </div>
           {trend !== null && (
             <div
               className={`rounded-xl border px-4 py-3 text-center min-w-[90px] ${
@@ -208,8 +208,8 @@ function WeeklyPerformanceChart() {
             >
               <defs>
                 <linearGradient id="scoreGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#7c3aed" stopOpacity={0.25} />
-                  <stop offset="95%" stopColor="#7c3aed" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#14b8a6" stopOpacity={0.25} />
+                  <stop offset="95%" stopColor="#14b8a6" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid
@@ -234,7 +234,7 @@ function WeeklyPerformanceChart() {
               <Area
                 type="monotone"
                 dataKey="displayScore"
-                stroke="#7c3aed"
+                stroke="#14b8a6"
                 strokeWidth={2.5}
                 fill="url(#scoreGradient)"
                 dot={(props) => {
@@ -247,13 +247,13 @@ function WeeklyPerformanceChart() {
                       cx={cx}
                       cy={cy}
                       r={5}
-                      fill="#7c3aed"
+                      fill="#14b8a6"
                       stroke="white"
                       strokeWidth={2}
                     />
                   );
                 }}
-                activeDot={{ r: 7, fill: "#7c3aed", stroke: "white", strokeWidth: 2 }}
+                activeDot={{ r: 7, fill: "#14b8a6", stroke: "white", strokeWidth: 2 }}
                 connectNulls={false}
               />
             </AreaChart>
