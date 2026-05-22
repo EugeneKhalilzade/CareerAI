@@ -20,7 +20,7 @@ function QuestionsSections({
 
   if (questions.length === 0) {
     return (
-      <div className="glass-card p-6 text-sm text-[#b6a66d]">
+      <div className="glass-card p-6 text-sm text-[#22d3ee]">
         No interview questions available for this session.
       </div>
     );
@@ -36,8 +36,8 @@ function QuestionsSections({
               onClick={() => setActiveQuestionIndex(index)}
               className={`rounded-full border px-3 py-1.5 text-xs font-medium transition md:text-sm ${
                 activeQuestionIndex == index
-                  ? "border-[#d4af37] bg-[#d4af37] text-[#06180d]"
-                  : "border-[#d4af37]/20 bg-[#0b1c12] text-[#b6a66d] hover:border-[#d4af37]/60 hover:text-[#f3d76b]"
+                  ? "border-[#22d3ee] bg-[#22d3ee] text-[#06180d]"
+                  : "border-[#22d3ee]/20 bg-[#0b1c12] text-[#22d3ee] hover:border-[#22d3ee]/60 hover:text-[#a855f7]"
               }`}
             >
               Q{index + 1}
@@ -51,19 +51,19 @@ function QuestionsSections({
           </h2>
           <button
             onClick={() => textToSpeach(questions[activeQuestionIndex]?.question)}
-            className="rounded-full border border-[#d4af37]/20 bg-[#0b1c12] p-2 text-[#d4af37] transition hover:border-[#d4af37]/60 hover:bg-[#d4af37]/10"
+            className="rounded-full border border-[#22d3ee]/20 bg-[#0b1c12] p-2 text-[#22d3ee] transition hover:border-[#22d3ee]/60 hover:bg-[#22d3ee]/10"
             aria-label="Read question aloud"
           >
             <Volume2 className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="mt-8 rounded-xl border border-[#d4af37]/20 bg-[#0b1c12] p-4">
+        <div className="mt-8 rounded-xl border border-[#22d3ee]/20 bg-[#0b1c12] p-4">
           <h2 className="flex items-center gap-2 font-semibold text-[#f5f0e8]">
-            <Lightbulb className="h-5 w-5 text-[#d4af37]" />
+            <Lightbulb className="h-5 w-5 text-[#22d3ee]" />
             Note
           </h2>
-          <h2 className="mt-2 text-sm leading-6 text-[#b6a66d]">
+          <h2 className="mt-2 text-sm leading-6 text-[#22d3ee]">
             {process.env.NEXT_PUBLIC_QUESTION_NOTE}
           </h2>
         </div>

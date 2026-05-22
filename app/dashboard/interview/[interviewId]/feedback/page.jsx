@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Neon theme applied
 
 import React, { useEffect, useState } from "react";
 import { db } from "@/utils/db";
@@ -61,23 +61,23 @@ function ShareModal({ interviewId, onClose }) {
         onClick={onClose}
       />
       {/* Modal */}
-      <div className="relative z-10 w-full max-w-md rounded-2xl border border-[#d4af37]/20 bg-[#071109] p-6 shadow-2xl backdrop-blur">
+      <div className="relative z-10 w-full max-w-md rounded-2xl border border-[#22d3ee]/20 bg-[#071109] p-6 shadow-2xl backdrop-blur">
         <div className="flex items-center gap-3 mb-4">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#d4af37]/10">
-            <Share2 className="h-5 w-5 text-[#d4af37]" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#22d3ee]/10">
+            <Share2 className="h-5 w-5 text-[#22d3ee]" />
           </div>
           <div>
             <h2 className="font-bold text-white text-lg">Share feedback</h2>
-            <p className="text-xs text-[#b6a66d]">Anyone with this link can view your results</p>
+            <p className="text-xs text-[#22d3ee]">Anyone with this link can view your results</p>
           </div>
         </div>
 
         {/* URL row */}
-        <div className="flex items-center gap-2 rounded-xl border border-[#d4af37]/20 bg-[#0b1c12] p-3">
-          <span className="flex-1 truncate text-sm text-[#b6a66d]">{shareUrl}</span>
+        <div className="flex items-center gap-2 rounded-xl border border-[#22d3ee]/20 bg-[#0b1c12] p-3">
+          <span className="flex-1 truncate text-sm text-[#22d3ee]">{shareUrl}</span>
           <button
             onClick={copy}
-            className="flex shrink-0 items-center gap-1.5 rounded-lg bg-[#d4af37] px-3 py-1.5 text-xs font-semibold text-[#06180d] transition hover:bg-[#f3d76b]"
+            className="flex shrink-0 items-center gap-1.5 rounded-lg bg-[#22d3ee] px-3 py-1.5 text-xs font-semibold text-[#06180d] transition hover:bg-[#a855f7]"
           >
             {copied ? (
               <><CheckCheck className="h-3.5 w-3.5" /> Copied!</>
@@ -88,9 +88,9 @@ function ShareModal({ interviewId, onClose }) {
         </div>
 
         {/* Preview chip */}
-        <div className="mt-4 flex items-center gap-2 rounded-xl border border-[#d4af37]/20 bg-[#0b1c12] p-3">
-          <ArrowUpRight className="h-4 w-4 text-[#d4af37] shrink-0" />
-          <p className="text-xs text-[#b6a66d]">
+        <div className="mt-4 flex items-center gap-2 rounded-xl border border-[#22d3ee]/20 bg-[#0b1c12] p-3">
+          <ArrowUpRight className="h-4 w-4 text-[#22d3ee] shrink-0" />
+          <p className="text-xs text-[#22d3ee]">
             The shared page is public and shows your questions, answers, and AI feedback — but <strong>never</strong> your email or personal info.
           </p>
         </div>
@@ -100,13 +100,13 @@ function ShareModal({ interviewId, onClose }) {
           <Button
             variant="outline"
             size="sm"
-            className="flex-1 border-[#d4af37]/40 text-[#d4af37] hover:bg-[#d4af37]/10"
+            className="flex-1 border-[#22d3ee]/40 text-[#22d3ee] hover:bg-[#22d3ee]/10"
             onClick={onClose}
           >
             Close
           </Button>
           <a href={shareUrl} target="_blank" rel="noopener noreferrer" className="flex-1">
-            <Button size="sm" className="w-full rounded-xl bg-[#d4af37] text-[#06180d] hover:bg-[#f3d76b]">
+            <Button size="sm" className="w-full rounded-xl bg-[#22d3ee] text-[#06180d] hover:bg-[#a855f7]">
               <ArrowUpRight className="mr-1.5 h-4 w-4" /> Open preview
             </Button>
           </a>
@@ -167,14 +167,14 @@ function Feedback({ params }) {
       {feedbackList?.length === 0 ? (
         <div className="glass-card p-6">
           <h2 className="text-xl font-bold text-white">No feedback found yet</h2>
-          <p className="mt-2 text-sm text-[#b6a66d]">
+          <p className="mt-2 text-sm text-[#22d3ee]">
             Complete the interview questions first, then come back to review your analysis.
           </p>
         </div>
       ) : (
         <>
           {isProPreview && (
-            <div className="rounded-2xl border border-[#d4af37]/30 bg-[#d4af37]/10 p-4 text-sm font-semibold text-white">
+            <div className="rounded-2xl border border-[#22d3ee]/30 bg-[#22d3ee]/10 p-4 text-sm font-semibold text-white">
               ⭐ Pro Preview Results - this level of detail is available every time on Pro
             </div>
           )}
@@ -184,7 +184,7 @@ function Feedback({ params }) {
             <div className="flex flex-wrap items-start justify-between gap-4">
               <div>
                 <h2 className="text-3xl font-bold text-white">Interview feedback</h2>
-                <p className="mt-2 text-sm text-[#b6a66d]">
+                <p className="mt-2 text-sm text-[#22d3ee]">
                   {hasFullAccess
                     ? "Review each answer and use the guidance to improve your next mock session."
                     : "Free results include a basic completion summary. Upgrade to unlock detailed analysis, scores, and answer tips."}
@@ -201,7 +201,7 @@ function Feedback({ params }) {
                   <button
                     type="button"
                     onClick={() => openUpgradeModal(true)}
-                    className="mt-4 rounded-full bg-[#d4af37] px-5 py-2 text-sm font-semibold text-[#06180d] transition hover:bg-[#f3d76b]"
+                    className="mt-4 rounded-full bg-[#22d3ee] px-5 py-2 text-sm font-semibold text-[#06180d] transition hover:bg-[#a855f7]"
                   >
                     Upgrade for full analysis
                   </button>
@@ -211,7 +211,7 @@ function Feedback({ params }) {
               {/* Share button */}
               <button
                 onClick={() => setShowShare(true)}
-                className="flex items-center gap-2 rounded-xl border border-[#d4af37]/30 bg-[#d4af37]/10 px-4 py-2.5 text-sm font-semibold text-[#d4af37] transition hover:bg-[#d4af37]/20 hover:shadow-md"
+                className="flex items-center gap-2 rounded-xl border border-[#22d3ee]/30 bg-[#22d3ee]/10 px-4 py-2.5 text-sm font-semibold text-[#22d3ee] transition hover:bg-[#22d3ee]/20 hover:shadow-md"
               >
                 <Share2 className="h-4 w-4" />
                 Share feedback
@@ -223,19 +223,19 @@ function Feedback({ params }) {
             <div className="grid gap-4 md:grid-cols-3">
               <div className="glass-card p-5">
                 <h3 className="font-semibold text-white">Strength & weakness mapping</h3>
-                <p className="mt-2 text-sm leading-6 text-[#b6a66d]">
+                <p className="mt-2 text-sm leading-6 text-[#22d3ee]">
                   Strong answers are mapped by score, while lower-scored answers highlight the areas to tighten next.
                 </p>
               </div>
               <div className="glass-card p-5">
                 <h3 className="font-semibold text-white">Score breakdown</h3>
-                <p className="mt-2 text-sm leading-6 text-[#b6a66d]">
+                <p className="mt-2 text-sm leading-6 text-[#22d3ee]">
                   Average score: {Number.isFinite(avgRating) ? avgRating * 10 : 0}%. Use each question rating below for the detailed split.
                 </p>
               </div>
               <div className="glass-card p-5">
                 <h3 className="font-semibold text-white">Improvement roadmap</h3>
-                <p className="mt-2 text-sm leading-6 text-[#b6a66d]">
+                <p className="mt-2 text-sm leading-6 text-[#22d3ee]">
                   Re-record your weakest answers, compare against ideal answer tips, then repeat the session with a tighter structure.
                 </p>
               </div>
@@ -247,17 +247,17 @@ function Feedback({ params }) {
             <Collapsible key={index} className="glass-card overflow-hidden">
               <CollapsibleTrigger className="flex w-full items-center justify-between gap-6 bg-[#0b1c12] p-4 text-left hover:bg-[#0d2a18] transition-colors">
                 <div className="flex items-center gap-3 min-w-0">
-                  <span className="shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-[#d4af37]/15 text-xs font-bold text-[#d4af37]">
+                  <span className="shrink-0 flex h-6 w-6 items-center justify-center rounded-full bg-[#22d3ee]/15 text-xs font-bold text-[#22d3ee]">
                     {index + 1}
                   </span>
                   <span className="font-medium text-white truncate">{item.question}</span>
                 </div>
                 <div className="flex shrink-0 items-center gap-2">
                   {hasFullAccess && <RatingBadge rating={item.rating} />}
-                  <ChevronsUpDownIcon className="h-5 w-5 text-[#a08c4a]" />
+                  <ChevronsUpDownIcon className="h-5 w-5 text-[#c084fc]" />
                 </div>
               </CollapsibleTrigger>
-              <CollapsibleContent className="border-t border-[#d4af37]/15 bg-[#08160d] p-4">
+              <CollapsibleContent className="border-t border-[#22d3ee]/15 bg-[#08160d] p-4">
                 <div className="space-y-2">
                   <div className="rounded-lg border border-red-400/30 bg-red-500/10 p-3 text-sm text-red-200">
                     <strong>Your Answer:</strong> {item.userAns}
@@ -285,9 +285,9 @@ function Feedback({ params }) {
           ))}
 
           {isProPreview && (
-            <div className="rounded-2xl border-2 border-[#d4af37]/40 bg-[#0b1c12] p-6 shadow-sm">
+            <div className="rounded-2xl border-2 border-[#22d3ee]/40 bg-[#0b1c12] p-6 shadow-sm">
               <h3 className="text-xl font-bold text-white">Ready to keep improving?</h3>
-              <p className="mt-2 text-sm text-[#b6a66d]">
+              <p className="mt-2 text-sm text-[#22d3ee]">
                 You&apos;ve seen what Pro can do. Unlock it permanently.
               </p>
               <p className="mt-3 text-sm font-semibold text-white">
@@ -296,7 +296,7 @@ function Feedback({ params }) {
               <button
                 type="button"
                 onClick={() => openUpgradeModal(false)}
-                className="mt-5 rounded-full bg-[#d4af37] px-5 py-3 text-sm font-semibold text-[#06180d] transition hover:bg-[#f3d76b]"
+                className="mt-5 rounded-full bg-[#22d3ee] px-5 py-3 text-sm font-semibold text-[#06180d] transition hover:bg-[#a855f7]"
               >
                 Upgrade to Pro - $9/mo
               </button>
@@ -308,13 +308,13 @@ function Feedback({ params }) {
       <div className="flex gap-3">
         <Button
           variant="outline"
-          className="rounded-full border-[#d4af37]/40 text-[#d4af37] hover:bg-[#d4af37]/10"
+          className="rounded-full border-[#22d3ee]/40 text-[#22d3ee] hover:bg-[#22d3ee]/10"
           onClick={() => window.history.back()}
         >
           ← Back
         </Button>
         <Link href="/dashboard">
-          <Button className="rounded-full bg-[#d4af37] text-[#06180d] hover:bg-[#f3d76b]">Back to Dashboard</Button>
+          <Button className="rounded-full bg-[#22d3ee] text-[#06180d] hover:bg-[#a855f7]">Back to Dashboard</Button>
         </Link>
       </div>
 
