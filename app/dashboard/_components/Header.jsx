@@ -16,25 +16,35 @@ function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-20 border-b bg-white/85 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-[#d4af37]/15 bg-[#071109]/80 backdrop-blur-xl">
       <div className="page-shell flex h-20 items-center justify-between">
-        <BrandLogo href="/dashboard" showTagline />
-        <nav className="hidden items-center gap-6 md:flex">
-          {navItems.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              className={`text-sm font-medium transition-colors ${
-                path === item.href ? "text-primary" : "text-slate-600 hover:text-slate-900"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <div className="flex items-center gap-6">
+          <BrandLogo href="/dashboard" showTagline />
+          <nav className="hidden items-center gap-1 rounded-full border border-[#d4af37]/10 bg-white/[0.04] p-1 md:flex">
+            {navItems.map((item) => {
+              const active = path === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`rounded-full px-3 py-1.5 text-sm font-medium transition ${
+                    active
+                      ? "bg-[#0d2a18] text-white shadow-[0_0_20px_rgba(212,175,55,0.12)]"
+                      : "text-[#b6a66d] hover:text-[#f3d76b]"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
         <div className="flex items-center gap-3">
           <Link href="/dashboard#new-interview">
-            <Button size="sm" className="hidden rounded-full md:inline-flex">
+            <Button
+              size="sm"
+              className="hidden rounded-full bg-[#d4af37] text-[#06180d] hover:bg-[#f3d76b] md:inline-flex"
+            >
               New Interview
             </Button>
           </Link>

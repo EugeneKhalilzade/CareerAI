@@ -16,6 +16,8 @@ function RecordAnswerSection({
   activeQuestionIndex,
   mockInterViewQuestion,
   interviewData,
+  plan = "free",
+  isProPreview = false,
 }) {
   const questions = Array.isArray(mockInterViewQuestion) ? mockInterViewQuestion : [];
   const activeQuestion = questions[activeQuestionIndex];
@@ -74,7 +76,10 @@ function RecordAnswerSection({
     }
 
     setLoading(true);
-    const feedbackPromt = `Question: ${activeQuestion.question}, User Answer: ${userAnswer}. Based on the question and the user's answer, please provide a rating 1 to 10 for the answer and feedback in the form of areas for improvement, if any. The feedback should in JSON format only nothing else field should be rating and feeback only, in just 3 to 5 lines.`;
+    const feedbackPromt =
+      plan === "free" && !isProPreview
+        ? `Question: ${activeQuestion.question}, User Answer: ${userAnswer}. The user is on the free plan, so do not generate detailed analysis. Return JSON only with fields rating and feedback. Set rating to "0" and make feedback a short general summary without score breakdown, strengths, weaknesses, ideal answer tips, or detailed analysis.`
+        : `Question: ${activeQuestion.question}, User Answer: ${userAnswer}. Based on the question and the user's answer, please provide a rating 1 to 10 and detailed feedback with strengths, weaknesses, improvement tips, and ideal answer guidance. The feedback should be in JSON format only nothing else field should be rating and feedback only.`;
     const result = await chatSession.sendMessage(feedbackPromt);
     const mockJsonResp = result.response
       .text()
@@ -104,8 +109,8 @@ function RecordAnswerSection({
 
   return (
     <div className="glass-card flex flex-col p-6">
-      <h2 className="text-lg font-semibold text-slate-900">Record your answer</h2>
-      <p className="mt-1 text-sm text-slate-600">
+      <h2 className="text-lg font-semibold text-white">Record your answer</h2>
+      <p className="mt-1 text-sm text-[#b6a66d]">
         Press start, answer clearly, and stop recording when done.
       </p>
 
@@ -122,11 +127,11 @@ function RecordAnswerSection({
         />
       </div>
 
-      <div className="mt-4 rounded-xl border border-slate-200 bg-white p-3">
-        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+      <div className="mt-4 rounded-xl border border-[#d4af37]/20 bg-[#0b1c12] p-3">
+        <p className="text-xs font-semibold uppercase tracking-wide text-[#a08c4a]">
           Live transcript
         </p>
-        <p className="mt-2 min-h-12 text-sm text-slate-700">
+        <p className="mt-2 min-h-12 text-sm text-[#f5f0e8]">
           {userAnswer || "Your spoken answer will appear here in real time."}
         </p>
       </div>
@@ -135,7 +140,7 @@ function RecordAnswerSection({
         disabled={loading || !questions.length}
         variant={isRecording ? "destructive" : "outline"}
         onClick={StartStopRecording}
-        className="mt-5"
+        className={isRecording ? "mt-5" : "mt-5 border-[#d4af37]/40 text-[#d4af37] hover:bg-[#d4af37]/10"}
       >
         {isRecording ? (
           <h2 className="flex items-center justify-center gap-2">

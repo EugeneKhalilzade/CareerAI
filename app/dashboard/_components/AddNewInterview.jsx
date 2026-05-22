@@ -15,6 +15,7 @@ import { LoaderCircle, PlusCircle } from "lucide-react";
 import { db } from "@/utils/db";
 import { MockInterview } from "@/utils/schema";
 import { normalizeInterviewQuestions } from "@/utils/interviewQuestions";
+import { extractResumeText, normalizeResumeText, RESUME_SUPPORTED_EXTENSIONS } from "@/utils/resumeUtils";
 import { v4 as uuidv4 } from "uuid";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment/moment";
@@ -26,15 +27,36 @@ function AddNewInterview() {
   const [jobPosition, setJobPosition] = useState("");
   const [jobDesc, setJobDesc] = useState("");
   const [jobExperience, setJobExperience] = useState("");
+  const [resumeText, setResumeText] = useState("");
+  const [resumeFileName, setResumeFileName] = useState("");
   const [loading, setLoading] = useState(false);
   const { user } = useUser();
   const route = useRouter();
+
+  const handleResumeUpload = async (event) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+    setResumeFileName(file.name);
+    try {
+      const text = await extractResumeText(file, { maxChars: 6000 });
+      setResumeText(text);
+      toast.success("Resume loaded. You can edit it below.");
+    } catch (error) {
+      toast.error(error?.message || "Could not read that resume file.");
+    } finally {
+      event.target.value = "";
+    }
+  };
 
   const onSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
-    const inputPrompt = `Generate ${process.env.NEXT_PUBLIC_INTERVIEW_QUESTION} interview questions and answers in JSON format based on the following: Job Position: ${jobPosition}, Job Description: ${jobDesc}, Years of Experience: ${jobExperience}. Only return JSON without additional text.`;
+    const normalizedResume = normalizeResumeText(resumeText, 6000);
+    const resumeContext = normalizedResume
+      ? `Candidate resume:\n${normalizedResume}\n\n`
+      : "";
+    const inputPrompt = `${resumeContext}Generate ${process.env.NEXT_PUBLIC_INTERVIEW_QUESTION} interview questions and answers in JSON format based on the following: Job Position: ${jobPosition}, Job Description: ${jobDesc}, Years of Experience: ${jobExperience}. Only return JSON without additional text.`;
     const result = await chatSession.sendMessage(inputPrompt);
     const MockJsonResp = result.response
       .text()
@@ -79,8 +101,8 @@ function AddNewInterview() {
       >
         <PlusCircle className="h-8 w-8 text-primary" />
         <div>
-          <h2 className="text-lg font-semibold text-slate-900">Start a new mock interview</h2>
-          <p className="mt-1 text-sm text-slate-600">
+          <h2 className="text-lg font-semibold text-white">Start a new mock interview</h2>
+          <p className="mt-1 text-sm text-[#b6a66d]">
             Create a role-focused session in seconds and begin practicing immediately.
           </p>
         </div>
@@ -88,19 +110,19 @@ function AddNewInterview() {
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle className="text-2xl">
+            <DialogTitle className="text-2xl text-white">
               Build your interview session
             </DialogTitle>
             <DialogDescription>
               <form onSubmit={onSubmit}>
                 <div className="space-y-4">
-                  <h2 className="text-sm text-slate-600">
-                    Add your target role details so KaryerAI can generate relevant
+                  <h2 className="text-sm text-[#b6a66d]">
+                    Add your target role details so CareerAI can generate relevant
                     questions and expected answers.
                   </h2>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-800">Job Role / Position</label>
+                    <label className="text-sm font-medium text-[#f5f0e8]">Job Role / Position</label>
                     <Input
                       value={jobPosition}
                       onChange={(event) => setJobPosition(event.target.value)}
@@ -109,7 +131,7 @@ function AddNewInterview() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-800">
+                    <label className="text-sm font-medium text-[#f5f0e8]">
                       Job Description / Tech Stack
                     </label>
                     <Textarea
@@ -120,7 +142,7 @@ function AddNewInterview() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-800">Years of experience</label>
+                    <label className="text-sm font-medium text-[#f5f0e8]">Years of experience</label>
                     <Input
                       value={jobExperience}
                       onChange={(event) => setJobExperience(event.target.value)}
@@ -131,6 +153,25 @@ function AddNewInterview() {
                       required
                     />
                   </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-[#f5f0e8]">
+                      Resume (optional)
+                    </label>
+                    <Input
+                      type="file"
+                      accept={RESUME_SUPPORTED_EXTENSIONS}
+                      onChange={handleResumeUpload}
+                    />
+                    {resumeFileName ? (
+                      <p className="text-xs text-[#a08c4a]">Loaded: {resumeFileName}</p>
+                    ) : null}
+                    <Textarea
+                      value={resumeText}
+                      onChange={(event) => setResumeText(event.target.value)}
+                      placeholder="Paste your resume text here to personalize questions."
+                      rows={6}
+                    />
+                  </div>
                 </div>
 
                 <div className="flex gap-5 justify-end">
@@ -138,6 +179,7 @@ function AddNewInterview() {
                     type="button"
                     variant="ghost"
                     onClick={() => setOpenDialog(false)}
+                    className="text-[#b6a66d] hover:text-white"
                   >
                     Cancel
                   </Button>
