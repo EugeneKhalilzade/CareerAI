@@ -1,4 +1,4 @@
-"use client";
+"use client"; // Neon theme applied
 import { Button } from "@/components/ui/button";
 import { db } from "@/utils/db";
 import { MockInterview } from "@/utils/schema";
@@ -31,7 +31,7 @@ function Interview({ params }) {
       <div className="space-y-6">
       <div>
         <h1 className="text-3xl font-bold text-white">Interview setup</h1>
-        <p className="mt-1 text-[#b6a66d]">
+        <p className="mt-1 text-[#22d3ee]">
           Review your session details, enable your webcam, and begin when ready.
         </p>
       </div>
@@ -39,7 +39,7 @@ function Interview({ params }) {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="glass-card space-y-4 p-6">
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-[#a08c4a]">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-[#c084fc]">
               Job role
             </h2>
             <p className="mt-1 text-lg font-semibold text-white">
@@ -47,23 +47,23 @@ function Interview({ params }) {
             </p>
           </div>
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-[#a08c4a]">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-[#c084fc]">
               Job description / stack
             </h2>
-            <p className="mt-1 text-sm leading-6 text-[#b6a66d]">{interviewData?.jobDesc}</p>
+            <p className="mt-1 text-sm leading-6 text-[#22d3ee]">{interviewData?.jobDesc}</p>
           </div>
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-[#a08c4a]">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-[#c084fc]">
               Experience
             </h2>
-            <p className="mt-1 text-sm text-[#b6a66d]">{interviewData?.jobExperience} years</p>
+            <p className="mt-1 text-sm text-[#22d3ee]">{interviewData?.jobExperience} years</p>
           </div>
-          <div className="rounded-xl border border-[#d4af37]/30 bg-[#0b1c12] p-4">
+          <div className="rounded-xl border border-[#22d3ee]/30 bg-[#0b1c12] p-4">
             <h3 className="flex items-center gap-2 font-semibold text-[#f5f0e8]">
               <Lightbulb className="h-5 w-5" />
               Before you start
             </h3>
-            <p className="mt-2 text-sm text-[#b6a66d]">{process.env.NEXT_PUBLIC_INFORMATION}</p>
+            <p className="mt-2 text-sm text-[#22d3ee]">{process.env.NEXT_PUBLIC_INFORMATION}</p>
           </div>
         </div>
 
@@ -77,12 +77,12 @@ function Interview({ params }) {
             />
           ) : (
             <>
-              <div className="flex h-64 w-full items-center justify-center rounded-xl border border-dashed border-[#d4af37]/20 bg-[#0b1c12]">
-                <Camera className="h-16 w-16 text-[#a08c4a]" />
+              <div className="flex h-64 w-full items-center justify-center rounded-xl border border-dashed border-[#22d3ee]/20 bg-[#0b1c12]">
+                <Camera className="h-16 w-16 text-[#c084fc]" />
               </div>
               <Button
                 variant="secondary"
-                className="mt-4 rounded-full bg-[#d4af37] text-[#06180d] hover:bg-[#f3d76b]"
+                className="mt-4 rounded-full bg-[#22d3ee] text-[#06180d] hover:bg-[#a855f7]"
                 onClick={() => setWebCamEnabled(true)}
               >
                 Enable Webcam & Microphone
