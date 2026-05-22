@@ -99,16 +99,16 @@ function AddNewInterview() {
         className="glass-card flex min-h-56 cursor-pointer flex-col justify-between p-6 transition hover:-translate-y-1 hover:shadow-xl"
         onClick={() => setOpenDialog(true)}
       >
-        <PlusCircle className="h-8 w-8 text-primary" />
+        <PlusCircle className="h-8 w-8 text-cyan-400" />
         <div>
           <h2 className="text-lg font-semibold text-white">Start a new mock interview</h2>
-          <p className="mt-1 text-sm text-[#b6a66d]">
+          <p className="mt-1 text-sm text-slate-400">
             Create a role-focused session in seconds and begin practicing immediately.
           </p>
         </div>
       </div>
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-2xl border border-cyan-500/20 bg-[#050510]/95 shadow-[0_0_50px_rgba(6,182,212,0.15)]">
           <DialogHeader>
             <DialogTitle className="text-2xl text-white">
               Build your interview session
@@ -116,22 +116,23 @@ function AddNewInterview() {
             <DialogDescription>
               <form onSubmit={onSubmit}>
                 <div className="space-y-4">
-                  <h2 className="text-sm text-[#b6a66d]">
+                  <h2 className="text-sm text-slate-400">
                     Add your target role details so CareerAI can generate relevant
                     questions and expected answers.
                   </h2>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-[#f5f0e8]">Job Role / Position</label>
+                    <label className="text-xs font-semibold uppercase tracking-wider text-cyan-400">Job Role / Position</label>
                     <Input
                       value={jobPosition}
                       onChange={(event) => setJobPosition(event.target.value)}
                       placeholder="Ex. Full Stack Developer"
                       required
+                      className="rounded-xl border-cyan-500/20 bg-[#050510] text-white focus-visible:ring-cyan-500/30"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-[#f5f0e8]">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
                       Job Description / Tech Stack
                     </label>
                     <Textarea
@@ -139,10 +140,11 @@ function AddNewInterview() {
                       onChange={(event) => setJobDesc(event.target.value)}
                       placeholder="Ex. React, Next.js, Node.js, API design, system design basics"
                       required
+                      className="rounded-xl border-cyan-500/20 bg-[#050510] text-white focus-visible:ring-cyan-500/30"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-[#f5f0e8]">Years of experience</label>
+                    <label className="text-xs font-semibold uppercase tracking-wider text-cyan-400">Years of experience</label>
                     <Input
                       value={jobExperience}
                       onChange={(event) => setJobExperience(event.target.value)}
@@ -151,39 +153,46 @@ function AddNewInterview() {
                       min="0"
                       max="50"
                       required
+                      className="rounded-xl border-cyan-500/20 bg-[#050510] text-white focus-visible:ring-cyan-500/30"
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-[#f5f0e8]">
+                    <label className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
                       Resume (optional)
                     </label>
                     <Input
                       type="file"
                       accept={RESUME_SUPPORTED_EXTENSIONS}
                       onChange={handleResumeUpload}
+                      className="rounded-xl border-cyan-500/20 bg-[#050510] text-white focus-visible:ring-cyan-500/30 file:text-cyan-400 file:bg-cyan-500/10 file:border-0 file:rounded-lg file:px-3 file:py-1 file:mr-3 file:cursor-pointer"
                     />
                     {resumeFileName ? (
-                      <p className="text-xs text-[#a08c4a]">Loaded: {resumeFileName}</p>
+                      <p className="text-xs text-cyan-400 font-bold">Loaded: {resumeFileName}</p>
                     ) : null}
                     <Textarea
                       value={resumeText}
                       onChange={(event) => setResumeText(event.target.value)}
                       placeholder="Paste your resume text here to personalize questions."
                       rows={6}
+                      className="rounded-xl border-cyan-500/20 bg-[#050510] text-white focus-visible:ring-cyan-500/30"
                     />
                   </div>
                 </div>
 
-                <div className="flex gap-5 justify-end">
+                <div className="flex gap-5 justify-end mt-6">
                   <Button
                     type="button"
                     variant="ghost"
                     onClick={() => setOpenDialog(false)}
-                    className="text-[#b6a66d] hover:text-white"
+                    className="text-slate-400 hover:text-white"
                   >
                     Cancel
                   </Button>
-                  <Button disabled={loading} type="submit" className="rounded-full">
+                  <Button
+                    disabled={loading}
+                    type="submit"
+                    className="rounded-full bg-gradient-to-r from-cyan-400 to-purple-600 hover:from-cyan-300 hover:to-purple-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.35)] border-0"
+                  >
                     {loading ? (
                       <>
                         <LoaderCircle className="mr-2 animate-spin" /> Generating...

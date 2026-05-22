@@ -7,10 +7,10 @@
     --background: 240 47% 4%;
     --foreground: 210 40% 98%;
 
-    --card: 244 47% 7%;
+    --card: 244 47% 6%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 244 47% 7%;
+    --popover: 244 47% 6%;
     --popover-foreground: 210 40% 98%;
 
     --primary: 191 97% 50%;
@@ -50,6 +50,19 @@
     @apply bg-background text-foreground antialiased;
     min-height: 100vh;
   }
+
+  /* Deep purple/indigo cyberpunk overrides for DarkShell */
+  div[class*="bg-[#06180d]"] {
+    background-color: #050510 !important;
+  }
+
+  .pointer-events-none.fixed.inset-0.-z-10 {
+    background: radial-gradient(circle at 62% 42%, rgba(147, 51, 234, 0.22), transparent 45%),
+                radial-gradient(circle at 12% 28%, rgba(6, 182, 212, 0.22), transparent 45%),
+                radial-gradient(circle at 85% 75%, rgba(6, 182, 212, 0.12), transparent 40%),
+                radial-gradient(circle at 35% 85%, rgba(147, 51, 234, 0.12), transparent 40%),
+                linear-gradient(180deg, #090916 0%, #050510 50%, #020205 100%) !important;
+  }
 }
 
 @layer components {
@@ -63,5 +76,20 @@
 
   .brand-highlight {
     @apply bg-gradient-to-r from-cyan-400 to-fuchsia-500 bg-clip-text text-transparent;
+  }
+
+  /* 3D Perspective Grid Floor Graphic */
+  .cyber-grid {
+    width: 100%;
+    height: 100%;
+    background-image: 
+      linear-gradient(rgba(6, 182, 212, 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(6, 182, 212, 0.08) 1px, transparent 1px);
+    background-size: 50px 50px;
+    background-position: center top;
+    transform: perspective(260px) rotateX(65deg);
+    transform-origin: center top;
+    mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1) 100%);
   }
 }

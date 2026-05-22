@@ -50,18 +50,18 @@ const CustomTooltip = ({ active, payload, label }) => {
   if (active && payload && payload.length) {
     const val = payload[0].value;
     return (
-      <div className="rounded-xl border border-[#d4af37]/20 bg-[#0d2a18]/90 px-4 py-3 shadow-xl backdrop-blur">
-        <p className="text-xs font-semibold uppercase tracking-wide text-[#a08c4a]">
+      <div className="rounded-xl border border-cyan-500/20 bg-[#050510]/90 px-4 py-3 shadow-[0_0_20px_rgba(6,182,212,0.15)] backdrop-blur">
+        <p className="text-xs font-semibold uppercase tracking-wide text-cyan-500">
           {label}
         </p>
-        <p className="mt-1 text-2xl font-bold text-[#d4af37]">
+        <p className="mt-1 text-2xl font-bold text-cyan-400">
           {val !== null ? `${val} / 10` : "No data"}
         </p>
       </div>
     );
   }
   return null;
-};
+}
 
 function WeeklyPerformanceChart() {
   const { user } = useUser();
@@ -143,23 +143,23 @@ function WeeklyPerformanceChart() {
         {/* Header */}
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 rounded-full bg-[#d4af37]/10 px-3 py-1 text-xs font-semibold text-[#d4af37]">
+            <div className="inline-flex items-center gap-2 rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-400">
               <BarChart2 className="h-3.5 w-3.5" />
               Weekly overview
             </div>
             <h2 className="mt-3 text-xl font-bold text-white">
               Performance this week
             </h2>
-            <p className="mt-1 text-sm text-[#b6a66d]">
+            <p className="mt-1 text-sm text-slate-400">
               Average AI rating per answer across the last 7 days
             </p>
           </div>
 
         {/* Stats pills */}
         <div className="flex gap-3 flex-wrap">
-            <div className="rounded-xl border border-[#d4af37]/20 bg-[#0b1c12] px-4 py-3 text-center min-w-[90px]">
-              <p className="text-xs text-[#a08c4a] font-medium">Avg score</p>
-              <p className="mt-0.5 text-2xl font-bold text-[#d4af37]">
+            <div className="rounded-xl border border-cyan-500/20 bg-[#050510] px-4 py-3 text-center min-w-[90px]">
+              <p className="text-xs text-cyan-500 font-medium">Avg score</p>
+              <p className="mt-0.5 text-2xl font-bold text-cyan-400">
                 {loading ? "—" : avgScore !== null ? avgScore : "—"}
               </p>
             </div>
@@ -171,7 +171,7 @@ function WeeklyPerformanceChart() {
                   : "border-rose-400/30 bg-rose-500/10"
               }`}
             >
-              <p className="text-xs text-[#a08c4a] font-medium">Trend</p>
+              <p className="text-xs text-cyan-500 font-medium">Trend</p>
               <p
                 className={`mt-0.5 text-2xl font-bold flex items-center justify-center gap-0.5 ${
                   trend >= 0 ? "text-emerald-300" : "text-rose-300"
@@ -191,11 +191,11 @@ function WeeklyPerformanceChart() {
       {/* Chart */}
       {loading ? (
         <div className="flex h-52 items-center justify-center">
-          <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#d4af37]/30 border-t-[#d4af37]" />
+          <div className="h-8 w-8 animate-spin rounded-full border-4 border-cyan-500/30 border-t-cyan-400" />
         </div>
       ) : chartData.every((d) => d.score === null) ? (
-        <div className="flex h-52 items-center justify-center rounded-xl border border-dashed border-[#d4af37]/20 bg-[#0b1c12]">
-          <p className="text-sm text-[#b6a66d]">
+        <div className="flex h-52 items-center justify-center rounded-xl border border-dashed border-cyan-500/20 bg-[#050510]">
+          <p className="text-sm text-slate-400">
             No interview answers yet this week. Complete a session to see your chart.
           </p>
         </div>
@@ -208,25 +208,25 @@ function WeeklyPerformanceChart() {
             >
               <defs>
                 <linearGradient id="scoreGradient" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="5%" stopColor="#d4af37" stopOpacity={0.25} />
-                  <stop offset="95%" stopColor="#d4af37" stopOpacity={0} />
+                  <stop offset="5%" stopColor="#22d3ee" stopOpacity={0.25} />
+                  <stop offset="95%" stopColor="#22d3ee" stopOpacity={0} />
                 </linearGradient>
               </defs>
               <CartesianGrid
                 strokeDasharray="3 3"
-                stroke="rgba(212,175,55,0.15)"
+                stroke="rgba(6,182,212,0.15)"
                 vertical={false}
               />
               <XAxis
                 dataKey="day"
-                tick={{ fontSize: 12, fill: "#b6a66d" }}
+                tick={{ fontSize: 12, fill: "#94a3b8" }}
                 axisLine={false}
                 tickLine={false}
               />
               <YAxis
                 domain={[0, 10]}
                 ticks={[0, 2, 4, 6, 8, 10]}
-                tick={{ fontSize: 11, fill: "#b6a66d" }}
+                tick={{ fontSize: 11, fill: "#94a3b8" }}
                 axisLine={false}
                 tickLine={false}
               />
@@ -234,7 +234,7 @@ function WeeklyPerformanceChart() {
               <Area
                 type="monotone"
                 dataKey="displayScore"
-                stroke="#d4af37"
+                stroke="#22d3ee"
                 strokeWidth={2.5}
                 fill="url(#scoreGradient)"
                 dot={(props) => {
@@ -247,13 +247,13 @@ function WeeklyPerformanceChart() {
                       cx={cx}
                       cy={cy}
                       r={5}
-                      fill="#d4af37"
-                      stroke="#06180d"
+                      fill="#22d3ee"
+                      stroke="#050510"
                       strokeWidth={2}
                     />
                   );
                 }}
-                activeDot={{ r: 7, fill: "#d4af37", stroke: "#06180d", strokeWidth: 2 }}
+                activeDot={{ r: 7, fill: "#22d3ee", stroke: "#050510", strokeWidth: 2 }}
                 connectNulls={false}
               />
             </AreaChart>
@@ -269,8 +269,8 @@ function WeeklyPerformanceChart() {
               key={d.day}
               className={`flex flex-col items-center rounded-lg px-3 py-1.5 text-xs ${
                 d.count > 0
-                  ? "bg-[#d4af37]/10 text-[#d4af37]"
-                  : "bg-white/5 text-[#a08c4a]"
+                  ? "bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shadow-[0_0_10px_rgba(6,182,212,0.1)]"
+                  : "bg-white/5 text-slate-500"
               }`}
             >
               <span className="font-semibold">{d.day}</span>

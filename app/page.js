@@ -72,8 +72,9 @@ export default function Home() {
         <section className="page-shell relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-20 pt-28 text-center">
           <div className="pointer-events-none absolute inset-0">
             {/* Ambient Radial Cyber Glows */}
-            <div className="absolute top-[20%] left-[5%] w-[450px] h-[450px] bg-purple-600/20 rounded-full blur-[140px] pointer-events-none" />
-            <div className="absolute bottom-[10%] right-[5%] w-[500px] h-[500px] bg-cyan-600/15 rounded-full blur-[160px] pointer-events-none" />
+            <div className="absolute top-[10%] left-[-15%] w-[650px] h-[650px] bg-purple-600/25 rounded-full blur-[160px] pointer-events-none" />
+            <div className="absolute top-[40%] right-[-15%] w-[700px] h-[700px] bg-cyan-500/20 rounded-full blur-[180px] pointer-events-none" />
+            <div className="absolute bottom-[5%] left-[10%] w-[550px] h-[550px] bg-indigo-600/20 rounded-full blur-[140px] pointer-events-none" />
 
             <BrainCircuit className="absolute left-[8%] top-[23%] h-8 w-8 rotate-12 text-cyan-500/10" />
             <Mic className="absolute right-[12%] top-[24%] h-10 w-10 -rotate-12 text-purple-500/10" />
@@ -92,7 +93,7 @@ export default function Home() {
             <h1 className="max-w-5xl text-6xl font-black leading-[0.98] tracking-tight text-white md:text-8xl lg:text-[104px]">
               Land your next
               <span className="block">
-                role with <span className="bg-gradient-to-r from-cyan-400 via-teal-300 to-fuchsia-500 bg-clip-text text-transparent drop-shadow-[0_0_15px_rgba(6,182,212,0.3)]">CareerAI</span>
+                role with <span className="bg-gradient-to-r from-cyan-400 via-indigo-400 to-purple-500 bg-clip-text text-transparent drop-shadow-[0_0_20px_rgba(6,182,212,0.4)]">CareerAI</span>
               </span>
             </h1>
 
@@ -105,7 +106,7 @@ export default function Home() {
               <Link href="/dashboard">
                 <Button
                   size="lg"
-                  className="h-14 rounded-full bg-gradient-to-r from-cyan-500 to-purple-600 hover:from-cyan-400 hover:to-purple-500 px-8 text-base font-bold text-white shadow-[0_0_25px_rgba(6,182,212,0.45)] hover:shadow-[0_0_35px_rgba(6,182,212,0.65)] transition-all duration-300 border-0"
+                  className="h-14 rounded-full bg-gradient-to-r from-cyan-400 to-purple-600 hover:from-cyan-300 hover:to-purple-500 px-8 text-base font-bold text-white shadow-[0_0_30px_rgba(6,182,212,0.6)] hover:shadow-[0_0_40px_rgba(168,85,247,0.75)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 border-0"
                 >
                   Get started <span className="ml-2 text-xl leading-none">&rarr;</span>
                 </Button>
@@ -115,7 +116,7 @@ export default function Home() {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="h-14 rounded-full border border-cyan-500/30 bg-slate-950/60 px-8 text-base font-bold text-white hover:bg-slate-900/60 hover:text-cyan-400 hover:border-cyan-400/50 hover:shadow-[0_0_15px_rgba(6,182,212,0.2)] transition-all duration-300"
+                    className="h-14 rounded-full border-2 border-cyan-500/40 bg-slate-950/40 px-8 text-base font-bold text-white hover:bg-slate-900/50 hover:text-cyan-400 hover:border-cyan-400 hover:shadow-[0_0_25px_rgba(6,182,212,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
                   >
                     Watch demo
                   </Button>
@@ -123,7 +124,7 @@ export default function Home() {
               </SignedOut>
             </div>
 
-            <div className="mt-24 w-full">
+            <div className="mt-24 w-full relative">
               <p className="text-xs font-bold uppercase tracking-[0.24em] text-purple-400/80">
                 Trusted by professionals at
               </p>
@@ -135,6 +136,11 @@ export default function Home() {
                 <span>Apple</span>
               </div>
             </div>
+          </div>
+
+          {/* 3D perspective cyber grid floor */}
+          <div className="absolute bottom-0 left-0 right-0 h-44 overflow-hidden pointer-events-none z-0">
+            <div className="cyber-grid opacity-[0.22]" />
           </div>
         </section>
 
@@ -153,16 +159,16 @@ export default function Home() {
             {featureList.map((feature) => (
               <div
                 key={feature.title}
-                className="group relative min-h-[360px] overflow-hidden rounded-2xl border border-cyan-500/20 bg-slate-950/60 p-8 shadow-[0_24px_70px_rgba(6,182,212,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400/60 hover:shadow-[0_0_35px_rgba(6,182,212,0.22)] hover:bg-slate-900/60"
+                className="group relative min-h-[360px] overflow-hidden rounded-2xl border border-cyan-500/20 bg-slate-950/80 p-8 shadow-[0_0_20px_rgba(6,182,212,0.05)] transition-all duration-300 hover:-translate-y-1 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(6,182,212,0.25)] hover:bg-[#080816]/90"
               >
                 <div className="pointer-events-none absolute right-10 top-10 text-3xl font-light text-cyan-400/40 group-hover:text-cyan-400/90 transition-colors">
                   +
                 </div>
-                <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-cyan-500/10 text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.2)] ring-1 ring-cyan-500/20">
+                <div className="inline-flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-cyan-500/10 to-purple-500/10 text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.3)] ring-1 ring-cyan-400/30 group-hover:ring-cyan-400/60 transition-all">
                   <feature.icon className="h-7 w-7" />
                 </div>
-                <div className="my-10 h-28 rounded-xl border border-cyan-500/10 bg-slate-950/50 shadow-[inset_0_-28px_50px_rgba(6,182,212,0.05)]" />
-                <h3 className="text-2xl font-black tracking-tight text-white">
+                <div className="my-10 h-28 rounded-xl border border-cyan-500/15 bg-slate-950/60 shadow-[inset_0_-20px_40px_rgba(6,182,212,0.08)] group-hover:border-cyan-400/30 group-hover:shadow-[inset_0_-20px_40px_rgba(168,85,247,0.1)] transition-all duration-300" />
+                <h3 className="text-2xl font-black tracking-tight text-white group-hover:text-cyan-300 transition-colors">
                   {feature.title}
                 </h3>
                 <p className="mt-5 text-lg leading-8 text-slate-400">
@@ -174,7 +180,7 @@ export default function Home() {
         </section>
 
         {/* How it works */}
-        <section className="page-shell relative border-t border-purple-500/20 px-6 py-24 text-center md:py-28">
+        <section className="page-shell relative border-t border-purple-500/25 px-6 py-24 text-center md:py-28">
           <p className="text-sm font-bold uppercase tracking-[0.24em] text-purple-400">
             How it works
           </p>
@@ -187,15 +193,15 @@ export default function Home() {
               const StepIcon = index === 1 ? Mic : index === 2 ? CheckCircle2 : BrainCircuit;
 
               return (
-                <div key={step} className="relative flex flex-col items-center">
-                  <div className="mb-8 text-6xl font-black text-cyan-500/25 md:text-7xl">
+                <div key={step} className="group relative flex flex-col items-center">
+                  <div className="mb-8 text-6xl font-black text-cyan-500/20 group-hover:text-cyan-400/40 group-hover:scale-105 transition-all duration-300 md:text-7xl">
                     {String(index + 1).padStart(2, "0")}
                   </div>
-                  <div className="mb-8 h-px w-full bg-cyan-500/20" />
-                  <div className="mb-9 flex h-20 w-20 items-center justify-center rounded-full border border-cyan-500/20 bg-slate-950 text-cyan-400 shadow-[0_0_20px_rgba(6,182,212,0.15)]">
+                  <div className="mb-8 h-px w-full bg-cyan-500/20 group-hover:bg-cyan-400/40 transition-colors" />
+                  <div className="mb-9 flex h-20 w-20 items-center justify-center rounded-full border-2 border-cyan-500/30 bg-slate-950/90 text-cyan-400 shadow-[0_0_25px_rgba(6,182,212,0.2)] group-hover:border-cyan-400 group-hover:shadow-[0_0_35px_rgba(6,182,212,0.4)] group-hover:scale-105 transition-all duration-300">
                     <StepIcon className="h-8 w-8" />
                   </div>
-                  <h3 className="text-2xl font-black text-white">
+                  <h3 className="text-2xl font-black text-white group-hover:text-purple-300 transition-colors">
                     {index === 0 ? "Create an interview" : index === 1 ? "Practice with voice" : "Review feedback"}
                   </h3>
                   <p className="mt-5 max-w-sm text-lg leading-8 text-slate-400">

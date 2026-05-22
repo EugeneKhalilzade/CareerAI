@@ -187,17 +187,17 @@ ${normalizedJob || "Not provided."}`;
         className="glass-card flex min-h-56 cursor-pointer flex-col justify-between p-6 transition hover:-translate-y-1 hover:shadow-xl"
         onClick={() => setOpenDialog(true)}
       >
-        <FileText className="h-8 w-8 text-primary" />
+        <FileText className="h-8 w-8 text-cyan-400" />
         <div>
           <h2 className="text-lg font-semibold text-white">Tailor your resume</h2>
-          <p className="mt-1 text-sm text-[#b6a66d]">
+          <p className="mt-1 text-sm text-slate-400">
             Upload or paste your resume and get a professional, job-aligned version.
           </p>
         </div>
       </div>
 
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-        <DialogContent className="max-w-4xl">
+        <DialogContent className="max-w-4xl border border-cyan-500/20 bg-[#050510]/95 shadow-[0_0_50px_rgba(6,182,212,0.15)]">
           <DialogHeader>
             <DialogTitle className="text-2xl text-white">AI resume tailor</DialogTitle>
             <DialogDescription>
@@ -205,22 +205,22 @@ ${normalizedJob || "Not provided."}`;
                 <div className="grid gap-6 md:grid-cols-2">
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-[#f5f0e8]">
+                      <label className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
                         Upload resume (PDF or text)
                       </label>
                       <Input
                         type="file"
                         accept={RESUME_SUPPORTED_EXTENSIONS}
                         onChange={handleResumeUpload}
-                        className="cursor-pointer border-[#d4af37]/40 bg-[#0b1c12] text-[#f5f0e8] file:bg-[#d4af37] file:text-[#06180d] file:font-semibold file:border-0 file:px-4 file:py-2 hover:border-[#d4af37]/60"
+                        className="cursor-pointer border-cyan-500/40 bg-[#050510] text-white file:bg-cyan-500/10 file:text-cyan-400 file:font-semibold file:border-0 file:px-4 file:py-2 hover:border-cyan-500/60 focus-visible:ring-cyan-500/30"
                       />
                       {resumeFileName ? (
-                        <p className="text-xs text-[#d4af37]">Loaded: {resumeFileName}</p>
+                        <p className="text-xs text-cyan-400 font-bold">Loaded: {resumeFileName}</p>
                       ) : null}
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-[#f5f0e8]">
+                      <label className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
                         Resume text
                       </label>
                       <Textarea
@@ -228,13 +228,14 @@ ${normalizedJob || "Not provided."}`;
                         onChange={(event) => setResumeText(event.target.value)}
                         placeholder="Paste your resume content here."
                         rows={10}
+                        className="rounded-xl border-cyan-500/20 bg-[#050510] text-white focus-visible:ring-cyan-500/30"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-4">
                     <div className="space-y-2">
-                      <label className="text-sm font-medium text-[#f5f0e8]">
+                      <label className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
                         Target job description (optional)
                       </label>
                       <Textarea
@@ -242,10 +243,11 @@ ${normalizedJob || "Not provided."}`;
                         onChange={(event) => setJobDescription(event.target.value)}
                         placeholder="Paste a job description to tailor for."
                         rows={6}
+                        className="rounded-xl border-cyan-500/20 bg-[#050510] text-white focus-visible:ring-cyan-500/30"
                       />
                     </div>
 
-                    <div className="rounded-xl border border-[#d4af37]/15 bg-[#0b1c12] p-4 text-xs text-[#b6a66d]">
+                    <div className="rounded-xl border border-cyan-500/20 bg-[#050510] p-4 text-xs text-slate-400">
                       Keep the text short and focused. The AI will rewrite your resume to
                       match the role and highlight the most relevant skills.
                     </div>
@@ -257,21 +259,22 @@ ${normalizedJob || "Not provided."}`;
                     type="button"
                     variant="ghost"
                     onClick={() => setOpenDialog(false)}
-                    className="text-[#b6a66d] hover:text-white"
+                    className="text-slate-400 hover:text-white"
                   >
                     Close
                   </Button>
                   <div className="flex gap-2">
                     {tailoredResume ? (
                       <>
-                        <Button type="button" variant="secondary" onClick={handleCopy}>
+                        <Button type="button" variant="outline" className="border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-400" onClick={handleCopy}>
                           <Copy className="mr-2 h-4 w-4" />
                           Copy result
                         </Button>
                         <div className="relative">
                           <Button
                             type="button"
-                            variant="secondary"
+                            variant="outline"
+                            className="border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-400"
                             onClick={() => setShowExportMenu(!showExportMenu)}
                           >
                             <Download className="mr-2 h-4 w-4" />
@@ -279,25 +282,25 @@ ${normalizedJob || "Not provided."}`;
                             <ChevronDown className="ml-1 h-4 w-4" />
                           </Button>
                           {showExportMenu && (
-                            <div className="absolute right-0 mt-2 w-32 rounded-md border border-[#d4af37]/30 bg-[#0d2a18] shadow-lg">
+                            <div className="absolute right-0 mt-2 w-32 rounded-md border border-cyan-500/30 bg-[#050510] shadow-lg z-50">
                               <button
                                 type="button"
                                 onClick={exportToTxt}
-                                className="block w-full px-4 py-2 text-left text-sm text-[#f5f0e8] hover:bg-[#1a3a25]"
+                                className="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-cyan-500/10 hover:text-cyan-300"
                               >
                                 Export as TXT
                               </button>
                               <button
                                 type="button"
                                 onClick={exportToPdf}
-                                className="block w-full px-4 py-2 text-left text-sm text-[#f5f0e8] hover:bg-[#1a3a25]"
+                                className="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-cyan-500/10 hover:text-cyan-300"
                               >
                                 Export as PDF
                               </button>
                               <button
                                 type="button"
                                 onClick={exportToDocx}
-                                className="block w-full px-4 py-2 text-left text-sm text-[#f5f0e8] hover:bg-[#1a3a25]"
+                                className="block w-full px-4 py-2 text-left text-sm text-slate-300 hover:bg-cyan-500/10 hover:text-cyan-300"
                               >
                                 Export as DOCX
                               </button>
@@ -306,7 +309,7 @@ ${normalizedJob || "Not provided."}`;
                         </div>
                       </>
                     ) : null}
-                    <Button disabled={loading} type="submit" className="rounded-full">
+                    <Button disabled={loading} type="submit" className="rounded-full bg-gradient-to-r from-cyan-400 to-purple-600 hover:from-cyan-300 hover:to-purple-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.35)] border-0">
                       {loading ? (
                         <>
                           <LoaderCircle className="mr-2 animate-spin" /> Tailoring...
@@ -322,7 +325,7 @@ ${normalizedJob || "Not provided."}`;
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-sm font-medium text-[#f5f0e8]">
+                  <label className="text-xs font-semibold uppercase tracking-wider text-cyan-400">
                     Tailored resume
                   </label>
                   <Textarea
@@ -330,6 +333,7 @@ ${normalizedJob || "Not provided."}`;
                     readOnly
                     placeholder="Your tailored resume will appear here."
                     rows={12}
+                    className="rounded-xl border-cyan-500/20 bg-[#050510] text-white focus-visible:ring-cyan-500/30"
                   />
                 </div>
               </form>

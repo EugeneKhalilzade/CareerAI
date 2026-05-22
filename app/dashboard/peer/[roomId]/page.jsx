@@ -5,7 +5,7 @@ import { useUser } from "@clerk/nextjs";
 import { JitsiMeeting } from "@jitsi/react-sdk";
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, Copy, CheckCheck, Share2 } from "lucide-react";
+import { ArrowLeft, CheckCheck, Share2 } from "lucide-react";
 
 export default function PeerRoom({ params }) {
   const { roomId } = params;
@@ -33,7 +33,7 @@ export default function PeerRoom({ params }) {
   if (!isLoaded) {
     return (
       <div className="flex h-[60vh] items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#d4af37]/30 border-t-[#d4af37]" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-cyan-500/30 border-t-cyan-400" />
       </div>
     );
   }
@@ -51,13 +51,13 @@ export default function PeerRoom({ params }) {
             variant="ghost"
             size="sm"
             onClick={() => router.push("/dashboard/peer")}
-            className="text-[#b6a66d] hover:text-white"
+            className="text-slate-400 hover:text-white"
           >
             <ArrowLeft className="mr-2 h-4 w-4" /> Leave Room
           </Button>
-          <div className="hidden sm:block h-6 w-px bg-[#d4af37]/20" />
+          <div className="hidden sm:block h-6 w-px bg-cyan-500/20" />
           <h2 className="hidden sm:block font-bold text-white">
-            Room: <span className="text-[#a08c4a] font-mono text-sm">{roomId}</span>
+            Room: <span className="text-cyan-400 font-mono text-sm">{roomId}</span>
           </h2>
         </div>
 
@@ -65,11 +65,11 @@ export default function PeerRoom({ params }) {
           variant="outline"
           size="sm"
           onClick={handleCopyLink}
-          className="border-[#d4af37]/40 bg-[#d4af37]/10 text-[#d4af37] hover:bg-[#d4af37]/20 transition rounded-full px-4"
+          className="border-cyan-500/40 bg-cyan-500/10 text-cyan-400 hover:bg-cyan-500/20 hover:border-cyan-400 transition rounded-full px-4"
         >
           {copied ? (
             <>
-              <CheckCheck className="mr-2 h-4 w-4 text-emerald-300" /> Link Copied
+              <CheckCheck className="mr-2 h-4 w-4 text-emerald-400 animate-pulse" /> Link Copied
             </>
           ) : (
             <>
@@ -80,10 +80,10 @@ export default function PeerRoom({ params }) {
       </div>
 
       {/* Jitsi Video Area */}
-      <div className="flex-1 rounded-2xl overflow-hidden shadow-xl border border-[#d4af37]/20 bg-slate-900 relative">
+      <div className="flex-1 rounded-2xl overflow-hidden shadow-xl border border-cyan-500/20 bg-slate-950 relative">
         <JitsiMeeting
           domain="meet.jit.si"
-            roomName={`CareerAI-Peer-${roomId}`}
+          roomName={`CareerAI-Peer-${roomId}`}
           configOverwrite={{
             startWithAudioMuted: false,
             startWithVideoMuted: false,
