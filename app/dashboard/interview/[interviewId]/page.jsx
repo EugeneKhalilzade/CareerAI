@@ -27,11 +27,11 @@ function Interview({ params }) {
     setInterviewData(result[0]);
   };
 
-  return (
-    <div className="space-y-6">
+    return (
+      <div className="space-y-6">
       <div>
-        <h1 className="text-3xl font-bold text-slate-900">Interview setup</h1>
-        <p className="mt-1 text-slate-600">
+        <h1 className="text-3xl font-bold text-white">Interview setup</h1>
+        <p className="mt-1 text-[#b6a66d]">
           Review your session details, enable your webcam, and begin when ready.
         </p>
       </div>
@@ -39,31 +39,31 @@ function Interview({ params }) {
       <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
         <div className="glass-card space-y-4 p-6">
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-[#a08c4a]">
               Job role
             </h2>
-            <p className="mt-1 text-lg font-semibold text-slate-900">
+            <p className="mt-1 text-lg font-semibold text-white">
               {interviewData?.jobPosition}
             </p>
           </div>
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-[#a08c4a]">
               Job description / stack
             </h2>
-            <p className="mt-1 text-sm leading-6 text-slate-700">{interviewData?.jobDesc}</p>
+            <p className="mt-1 text-sm leading-6 text-[#b6a66d]">{interviewData?.jobDesc}</p>
           </div>
           <div>
-            <h2 className="text-sm font-semibold uppercase tracking-wide text-slate-500">
+            <h2 className="text-sm font-semibold uppercase tracking-wide text-[#a08c4a]">
               Experience
             </h2>
-            <p className="mt-1 text-sm text-slate-700">{interviewData?.jobExperience} years</p>
+            <p className="mt-1 text-sm text-[#b6a66d]">{interviewData?.jobExperience} years</p>
           </div>
-          <div className="rounded-xl border border-yellow-200 bg-yellow-50 p-4">
-            <h3 className="flex items-center gap-2 font-semibold text-yellow-800">
+          <div className="rounded-xl border border-[#d4af37]/30 bg-[#0b1c12] p-4">
+            <h3 className="flex items-center gap-2 font-semibold text-[#f5f0e8]">
               <Lightbulb className="h-5 w-5" />
               Before you start
             </h3>
-            <p className="mt-2 text-sm text-yellow-800">{process.env.NEXT_PUBLIC_INFORMATION}</p>
+            <p className="mt-2 text-sm text-[#b6a66d]">{process.env.NEXT_PUBLIC_INFORMATION}</p>
           </div>
         </div>
 
@@ -77,12 +77,12 @@ function Interview({ params }) {
             />
           ) : (
             <>
-              <div className="flex h-64 w-full items-center justify-center rounded-xl border border-dashed border-slate-300 bg-slate-50">
-                <Camera className="h-16 w-16 text-slate-400" />
+              <div className="flex h-64 w-full items-center justify-center rounded-xl border border-dashed border-[#d4af37]/20 bg-[#0b1c12]">
+                <Camera className="h-16 w-16 text-[#a08c4a]" />
               </div>
               <Button
                 variant="secondary"
-                className="mt-4 rounded-full"
+                className="mt-4 rounded-full bg-[#d4af37] text-[#06180d] hover:bg-[#f3d76b]"
                 onClick={() => setWebCamEnabled(true)}
               >
                 Enable Webcam & Microphone

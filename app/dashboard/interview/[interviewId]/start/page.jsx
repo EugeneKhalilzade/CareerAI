@@ -118,18 +118,18 @@ function StartInterview({ params }) {
 
       <div className="glass-card flex flex-col gap-2 p-5 sm:flex-row sm:items-center sm:justify-between">
         <div>
-          <h1 className="text-2xl font-bold text-slate-900">Live interview session</h1>
-          <p className="text-sm text-slate-600">
+          <h1 className="text-2xl font-bold text-white">Live interview session</h1>
+          <p className="text-sm text-[#b6a66d]">
             Stay concise, speak clearly, and move through each question.
           </p>
         </div>
-        <div className="rounded-full bg-primary/10 px-4 py-1.5 text-sm font-semibold text-primary">
+        <div className="rounded-full bg-[#d4af37]/10 px-4 py-1.5 text-sm font-semibold text-[#d4af37]">
           Question {totalQuestions ? activeQuestionIndex + 1 : 0} / {totalQuestions}
         </div>
       </div>
 
       {isProPreview && (
-        <div className="rounded-2xl border border-[#00BFA6]/30 bg-[#00BFA6]/10 p-4 text-sm font-semibold text-slate-900">
+        <div className="rounded-2xl border border-[#d4af37]/30 bg-[#d4af37]/10 p-4 text-sm font-semibold text-white">
           🎁 This is your Pro Preview interview &mdash; you&apos;ll get full detailed analysis this one time!
         </div>
       )}
@@ -144,17 +144,17 @@ function StartInterview({ params }) {
       )}
 
       {plan === "free" && !isProPreview && interviewStatus !== "blocked" && (
-        <div className="rounded-full bg-white px-4 py-2 text-sm font-semibold text-slate-700 shadow-sm">
+        <div className="rounded-full bg-[#0b1c12] px-4 py-2 text-sm font-semibold text-[#f5f0e8] shadow-sm">
           Free plan timer: {timerMinutes}:{timerSeconds}
         </div>
       )}
 
       {!limitReady ? (
-        <div className="glass-card p-6 text-sm text-slate-700">
+        <div className="glass-card p-6 text-sm text-[#b6a66d]">
           Checking your interview access...
         </div>
       ) : interviewStatus === "blocked" ? (
-        <div className="glass-card p-6 text-sm text-slate-700">
+        <div className="glass-card p-6 text-sm text-[#b6a66d]">
           You have reached the free interview limit. Upgrade to Pro to continue practicing.
         </div>
       ) : hasQuestions ? (
@@ -176,28 +176,35 @@ function StartInterview({ params }) {
             />
           </div>
 
-          <div className="flex flex-wrap justify-end gap-3">
-            {activeQuestionIndex > 0 && (
-              <Button variant="outline" onClick={() => setActiveQuestionIndex(activeQuestionIndex - 1)}>
-                Previous Question
-              </Button>
-            )}
+            <div className="flex flex-wrap justify-end gap-3">
+              {activeQuestionIndex > 0 && (
+                <Button
+                  variant="outline"
+                  className="border-[#d4af37]/40 text-[#d4af37] hover:bg-[#d4af37]/10"
+                  onClick={() => setActiveQuestionIndex(activeQuestionIndex - 1)}
+                >
+                  Previous Question
+                </Button>
+              )}
 
-            {activeQuestionIndex !== mockInterviewQuestion?.length - 1 && (
-              <Button onClick={() => setActiveQuestionIndex(activeQuestionIndex + 1)}>
-                Next Question
-              </Button>
-            )}
+              {activeQuestionIndex !== mockInterviewQuestion?.length - 1 && (
+                <Button
+                  className="bg-[#d4af37] text-[#06180d] hover:bg-[#f3d76b]"
+                  onClick={() => setActiveQuestionIndex(activeQuestionIndex + 1)}
+                >
+                  Next Question
+                </Button>
+              )}
 
-            {activeQuestionIndex == mockInterviewQuestion?.length - 1 && (
-              <Link href={"/dashboard/interview/" + interviewData?.mockId + "/feedback" + (isProPreview ? "?proPreview=true" : "")}>
-                <Button>Finish & View Feedback</Button>
-              </Link>
-            )}
-          </div>
-        </>
-      ) : (
-        <div className="glass-card p-6 text-sm text-slate-700">
+              {activeQuestionIndex == mockInterviewQuestion?.length - 1 && (
+                <Link href={"/dashboard/interview/" + interviewData?.mockId + "/feedback" + (isProPreview ? "?proPreview=true" : "")}>
+                  <Button className="bg-[#d4af37] text-[#06180d] hover:bg-[#f3d76b]">Finish & View Feedback</Button>
+                </Link>
+              )}
+            </div>
+          </>
+        ) : (
+        <div className="glass-card p-6 text-sm text-[#b6a66d]">
           We couldn&apos;t find valid questions for this interview. Create a new interview and try again.
         </div>
       )}

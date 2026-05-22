@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import BrandLogo from "@/components/BrandLogo";
 import Footer from "@/app/dashboard/_components/Footer";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import DarkShell from "@/components/DarkShell";
 
 
 export default function Home() {
@@ -33,8 +34,7 @@ export default function Home() {
   ];
 
   return (
-    <div className="relative flex min-h-screen flex-col overflow-hidden bg-[#06180d] text-white">
-      <div className="pointer-events-none fixed inset-0 -z-10 bg-[radial-gradient(circle_at_62%_42%,rgba(67,48,112,0.48),transparent_32%),radial-gradient(circle_at_42%_38%,rgba(21,37,39,0.72),transparent_36%),radial-gradient(circle_at_15%_30%,rgba(6,42,22,0.62),transparent_28%),linear-gradient(180deg,#071d10_0%,#06180d_48%,#041208_100%)]" />
+    <DarkShell className="flex flex-col">
 
       <header className="fixed left-0 right-0 top-0 z-40 border-b border-white/10 bg-[#071109]/80 backdrop-blur-xl">
         <div className="page-shell flex h-20 items-center justify-between">
@@ -205,6 +205,6 @@ export default function Home() {
 
       </main>
       <Footer />
-    </div>
+    </DarkShell>
   );
 }

@@ -109,8 +109,8 @@ function RecordAnswerSection({
 
   return (
     <div className="glass-card flex flex-col p-6">
-      <h2 className="text-lg font-semibold text-slate-900">Record your answer</h2>
-      <p className="mt-1 text-sm text-slate-600">
+      <h2 className="text-lg font-semibold text-white">Record your answer</h2>
+      <p className="mt-1 text-sm text-[#b6a66d]">
         Press start, answer clearly, and stop recording when done.
       </p>
 
@@ -127,11 +127,11 @@ function RecordAnswerSection({
         />
       </div>
 
-      <div className="mt-4 rounded-xl border border-slate-200 bg-white p-3">
-        <p className="text-xs font-semibold uppercase tracking-wide text-slate-500">
+      <div className="mt-4 rounded-xl border border-[#d4af37]/20 bg-[#0b1c12] p-3">
+        <p className="text-xs font-semibold uppercase tracking-wide text-[#a08c4a]">
           Live transcript
         </p>
-        <p className="mt-2 min-h-12 text-sm text-slate-700">
+        <p className="mt-2 min-h-12 text-sm text-[#f5f0e8]">
           {userAnswer || "Your spoken answer will appear here in real time."}
         </p>
       </div>
@@ -140,7 +140,7 @@ function RecordAnswerSection({
         disabled={loading || !questions.length}
         variant={isRecording ? "destructive" : "outline"}
         onClick={StartStopRecording}
-        className="mt-5"
+        className={isRecording ? "mt-5" : "mt-5 border-[#d4af37]/40 text-[#d4af37] hover:bg-[#d4af37]/10"}
       >
         {isRecording ? (
           <h2 className="flex items-center justify-center gap-2">
