@@ -70,15 +70,15 @@ function PricingModal({ open, onClose, dismissible = true }) {
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div
-        className="absolute inset-0 bg-slate-950/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-slate-950/60 backdrop-blur-md"
         onClick={closeModal}
       />
-      <div className="relative z-10 max-h-[92vh] w-full max-w-6xl overflow-y-auto rounded-3xl border border-[#d4af37]/20 bg-[#071109] p-5 shadow-2xl sm:p-8">
+      <div className="relative z-10 max-h-[92vh] w-full max-w-6xl overflow-y-auto rounded-3xl border border-cyan-500/20 bg-[#050510]/95 p-5 shadow-[0_0_50px_rgba(6,182,212,0.15)] sm:p-8">
         {dismissible && (
           <button
             type="button"
             onClick={closeModal}
-            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#0d2a18] text-[#b6a66d] shadow-sm transition hover:text-white"
+            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white/5 text-slate-400 shadow-sm transition hover:bg-white/10 hover:text-white"
             aria-label="Close pricing modal"
           >
             <X className="h-5 w-5" />
@@ -86,17 +86,17 @@ function PricingModal({ open, onClose, dismissible = true }) {
         )}
 
         <div className="mx-auto max-w-2xl text-center">
-          <span className="inline-flex rounded-full bg-[#d4af37] px-3 py-1 text-xs font-semibold text-[#06180d]">
+          <span className="inline-flex rounded-full bg-cyan-500/10 border border-cyan-500/30 px-3 py-1 text-xs font-semibold text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
             Simple pricing
           </span>
           <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">
             Choose the right plan for your career growth
           </h2>
-          <p className="mt-3 text-sm text-[#b6a66d]">
+          <p className="mt-3 text-sm text-slate-400">
             Practice smarter and boost your confidence with AI-powered interviews.
           </p>
 
-          <div className="mt-6 inline-flex rounded-full border border-[#d4af37]/10 bg-white/[0.04] p-1">
+          <div className="mt-6 inline-flex rounded-full border border-cyan-500/20 bg-white/[0.04] p-1">
             {["monthly", "yearly"].map((value) => (
               <button
                 key={value}
@@ -104,8 +104,8 @@ function PricingModal({ open, onClose, dismissible = true }) {
                 onClick={() => setBilling(value)}
                 className={`rounded-full px-4 py-2 text-xs font-semibold capitalize transition ${
                   billing === value
-                    ? "bg-[#0d2a18] text-white shadow-sm"
-                    : "text-[#b6a66d] hover:text-[#f3d76b]"
+                    ? "bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 shadow-sm"
+                    : "text-slate-400 hover:text-cyan-300"
                 }`}
               >
                 {value}
@@ -118,28 +118,28 @@ function PricingModal({ open, onClose, dismissible = true }) {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative rounded-2xl bg-[#0d2a18]/80 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.28)] ${
+              className={`relative rounded-2xl p-6 shadow-[0_24px_70px_rgba(0,0,0,0.4)] transition-all duration-300 ${
                 plan.featured
-                  ? "border-2 border-[#d4af37]"
-                  : "border border-[#d4af37]/15"
+                  ? "border-2 border-purple-500 bg-[#080816]/95 shadow-[0_0_30px_rgba(168,85,247,0.25)] hover:shadow-[0_0_40px_rgba(168,85,247,0.35)]"
+                  : "border border-cyan-500/20 bg-[#080816]/80 hover:border-cyan-500/40 hover:shadow-[0_0_30px_rgba(6,182,212,0.15)]"
               }`}
             >
               {plan.featured && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#d4af37] px-3 py-1 text-xs font-semibold text-[#06180d]">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-gradient-to-r from-cyan-400 to-purple-600 px-3 py-1 text-xs font-semibold text-white shadow-[0_0_15px_rgba(6,182,212,0.4)]">
                   Best Value
                 </span>
               )}
               <h3 className="text-lg font-bold text-white">{plan.name}</h3>
               <div className="mt-2 flex items-end gap-1">
                 <span className="text-3xl font-bold text-white">{plan.price}</span>
-                <span className="pb-1 text-sm text-[#b6a66d]">/{billing === "monthly" ? "mo" : "yr"}</span>
+                <span className="pb-1 text-sm text-slate-400">/{billing === "monthly" ? "mo" : "yr"}</span>
               </div>
-              <p className="mt-3 min-h-12 text-sm leading-6 text-[#b6a66d]">{plan.description}</p>
+              <p className="mt-3 min-h-12 text-sm leading-6 text-slate-400">{plan.description}</p>
 
               <ul className="mt-5 space-y-3">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm text-[#f5f0e8]">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#d4af37]" />
+                  <li key={feature} className="flex items-start gap-2 text-sm text-slate-300">
+                    <Check className={`mt-0.5 h-4 w-4 shrink-0 ${plan.featured ? "text-purple-400" : "text-cyan-400"}`} />
                     {feature}
                   </li>
                 ))}
@@ -149,12 +149,12 @@ function PricingModal({ open, onClose, dismissible = true }) {
                 type="button"
                 disabled={plan.current || loading}
                 onClick={plan.featured ? upgradeToPro : undefined}
-                className={`mt-6 w-full rounded-full px-4 py-3 text-sm font-semibold transition ${
+                className={`mt-6 w-full rounded-full px-4 py-3 text-sm font-semibold transition-all duration-300 ${
                   plan.featured
-                    ? "bg-[#d4af37] text-[#06180d] hover:bg-[#f3d76b]"
+                    ? "bg-gradient-to-r from-cyan-400 to-purple-600 hover:from-cyan-300 hover:to-purple-500 text-white shadow-[0_0_20px_rgba(6,182,212,0.4)] hover:shadow-[0_0_30px_rgba(168,85,247,0.5)] border-0 hover:scale-[1.02] active:scale-[0.98]"
                     : plan.current
-                      ? "cursor-not-allowed bg-white/10 text-white/40"
-                      : "border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37]/10"
+                      ? "cursor-not-allowed bg-white/5 text-slate-500 border border-white/5"
+                      : "border border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-400 hover:scale-[1.02] active:scale-[0.98]"
                 }`}
               >
                 {loading && plan.featured ? "Opening checkout..." : plan.cta}
