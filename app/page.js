@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import BrandLogo from "@/components/BrandLogo";
 import Footer from "@/app/dashboard/_components/Footer";
 import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import UpgradeBanner from "@/components/UpgradeBanner";
+
 
 export default function Home() {
   const featureList = [
@@ -64,9 +64,7 @@ export default function Home() {
         </div>
       </header>
 
-      <div className="fixed left-0 right-0 top-20 z-30 border-b border-[#d4af37]/20 bg-[#071109]/75 backdrop-blur-xl">
-        <UpgradeBanner />
-      </div>
+
 
       <main className="relative flex-1 pt-20">
 
