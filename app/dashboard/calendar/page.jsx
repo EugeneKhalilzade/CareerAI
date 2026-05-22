@@ -4,7 +4,7 @@ import React, { useEffect, useState, useCallback } from "react";
 import { useUser } from "@clerk/nextjs";
 import { db } from "@/utils/db";
 import { CalendarEvent } from "@/utils/schema";
-import { eq, and } from "drizzle-orm";
+import { eq } from "drizzle-orm";
 import moment from "moment";
 import {
   ChevronLeft,
@@ -42,20 +42,20 @@ function leadingBlanks(year, month) {
 const TYPE_META = {
   note: {
     label: "Note",
-    color: "bg-[#a08c4a]",
-    light: "bg-[#0b1c12] border-[#a08c4a]/40 text-[#a08c4a]",
+    color: "bg-purple-500",
+    light: "bg-purple-950/20 border-purple-500/30 text-purple-400",
     icon: StickyNote,
   },
   interview: {
     label: "Mock Interview",
-    color: "bg-[#d4af37]",
-    light: "bg-[#d4af37]/10 border-[#d4af37]/30 text-[#d4af37]",
+    color: "bg-cyan-500",
+    light: "bg-cyan-500/10 border-cyan-500/30 text-cyan-400",
     icon: BriefcaseBusiness,
   },
   peer: {
     label: "Peer Practice",
-    color: "bg-[#f3d76b]",
-    light: "bg-[#f3d76b]/10 border-[#f3d76b]/30 text-[#f3d76b]",
+    color: "bg-indigo-500",
+    light: "bg-indigo-500/10 border-indigo-500/30 text-indigo-400",
     icon: Users,
   },
 };
@@ -90,7 +90,7 @@ function EventForm({ date, existing, onSave, onCancel }) {
               className={`flex flex-1 items-center justify-center gap-1.5 rounded-xl border py-2 text-sm font-medium transition-all ${
                 type === key
                   ? `${meta.light} border-current`
-                  : "border-[#d4af37]/20 text-[#b6a66d] hover:border-[#d4af37]/40"
+                  : "border-cyan-500/20 text-slate-400 hover:border-cyan-500/40"
               }`}
             >
               <Icon className="h-4 w-4" />
@@ -102,33 +102,33 @@ function EventForm({ date, existing, onSave, onCancel }) {
 
       {/* Title */}
       <div className="space-y-1">
-        <label className="text-xs font-semibold uppercase tracking-wide text-[#a08c4a]">
+        <label className="text-xs font-semibold uppercase tracking-wide text-cyan-400">
           Title *
         </label>
         <input
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder={type === "interview" ? "e.g. Frontend Engineer prep" : "e.g. Review system design"}
-          className="w-full rounded-xl border border-[#d4af37]/20 bg-[#071109] px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-[#d4af37]/50 focus:outline-none focus:ring-2 focus:ring-[#d4af37]/20"
+          className="w-full rounded-xl border border-cyan-500/20 bg-[#050510] px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/20"
         />
       </div>
 
       {/* Time */}
       <div className="space-y-1">
-        <label className="text-xs font-semibold uppercase tracking-wide text-[#a08c4a] flex items-center gap-1">
+        <label className="text-xs font-semibold uppercase tracking-wide text-cyan-400 flex items-center gap-1">
           <Clock className="h-3 w-3" /> Time (optional)
         </label>
         <input
           type="time"
           value={time}
           onChange={(e) => setTime(e.target.value)}
-          className="w-full rounded-xl border border-[#d4af37]/20 bg-[#071109] px-3 py-2 text-sm text-white focus:border-[#d4af37]/50 focus:outline-none focus:ring-2 focus:ring-[#d4af37]/20"
+          className="w-full rounded-xl border border-cyan-500/20 bg-[#050510] px-3 py-2 text-sm text-white focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/20"
         />
       </div>
 
       {/* Notes */}
       <div className="space-y-1">
-        <label className="text-xs font-semibold uppercase tracking-wide text-[#a08c4a]">
+        <label className="text-xs font-semibold uppercase tracking-wide text-cyan-400">
           Notes
         </label>
         <textarea
@@ -136,17 +136,17 @@ function EventForm({ date, existing, onSave, onCancel }) {
           onChange={(e) => setNotes(e.target.value)}
           rows={3}
           placeholder="Add any details, goals, or reminders…"
-          className="w-full resize-none rounded-xl border border-[#d4af37]/20 bg-[#071109] px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-[#d4af37]/50 focus:outline-none focus:ring-2 focus:ring-[#d4af37]/20"
+          className="w-full resize-none rounded-xl border border-cyan-500/20 bg-[#050510] px-3 py-2 text-sm text-white placeholder:text-white/30 focus:border-cyan-500/50 focus:outline-none focus:ring-2 focus:ring-cyan-500/20"
         />
       </div>
 
       <div className="flex gap-2 pt-1">
-        <Button variant="ghost" size="sm" className="flex-1 text-[#b6a66d] hover:text-white" onClick={onCancel}>
+        <Button variant="ghost" size="sm" className="flex-1 text-slate-400 hover:text-white" onClick={onCancel}>
           Cancel
         </Button>
         <Button
           size="sm"
-          className="flex-1 rounded-xl"
+          className="flex-1 rounded-xl bg-gradient-to-r from-cyan-400 to-purple-600 hover:from-cyan-300 hover:to-purple-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.35)] border-0"
           disabled={!valid || saving}
           onClick={handleSave}
         >
@@ -302,14 +302,14 @@ export default function CalendarPage() {
     <div className="space-y-6">
       {/* Page header */}
       <section className="glass-card p-6 md:p-8">
-        <div className="inline-flex items-center gap-2 rounded-full bg-[#d4af37]/10 px-3 py-1 text-xs font-semibold text-[#d4af37]">
+        <div className="inline-flex items-center gap-2 rounded-full bg-cyan-500/10 px-3 py-1 text-xs font-semibold text-cyan-400 shadow-[0_0_15px_rgba(6,182,212,0.15)]">
           <CalendarDays className="h-3.5 w-3.5" />
           Plan &amp; prepare
         </div>
         <h1 className="mt-3 text-3xl font-bold text-white">
           Interview Calendar
         </h1>
-        <p className="mt-2 max-w-2xl text-[#b6a66d]">
+        <p className="mt-2 max-w-2xl text-slate-400">
           Schedule mock interview sessions, drop notes, and keep your prep
           organised — all in one place.
         </p>
@@ -320,10 +320,10 @@ export default function CalendarPage() {
         {/* ── Calendar grid ─────────────────────────────────────────── */}
         <div className="glass-card overflow-hidden">
           {/* month navigation */}
-          <div className="flex items-center justify-between border-b border-[#d4af37]/10 px-6 py-4">
+          <div className="flex items-center justify-between border-b border-cyan-500/10 px-6 py-4">
             <button
               onClick={() => setCursor(cursor.clone().subtract(1, "month"))}
-              className="rounded-xl p-2 text-[#b6a66d] hover:bg-white/5 transition"
+              className="rounded-xl p-2 text-slate-400 hover:bg-white/5 transition"
             >
               <ChevronLeft className="h-5 w-5" />
             </button>
@@ -332,18 +332,18 @@ export default function CalendarPage() {
             </h2>
             <button
               onClick={() => setCursor(cursor.clone().add(1, "month"))}
-              className="rounded-xl p-2 text-[#b6a66d] hover:bg-white/5 transition"
+              className="rounded-xl p-2 text-slate-400 hover:bg-white/5 transition"
             >
               <ChevronRight className="h-5 w-5" />
             </button>
           </div>
 
           {/* weekday labels */}
-          <div className="grid grid-cols-7 border-b border-[#d4af37]/10">
+          <div className="grid grid-cols-7 border-b border-cyan-500/10">
             {["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].map((d) => (
               <div
                 key={d}
-                className="py-2 text-center text-xs font-semibold uppercase tracking-wide text-[#a08c4a]"
+                className="py-2 text-center text-xs font-semibold uppercase tracking-wide text-cyan-400"
               >
                 {d}
               </div>
@@ -354,7 +354,7 @@ export default function CalendarPage() {
           <div className="grid grid-cols-7">
             {/* blank leading cells */}
             {blanks.map((_, i) => (
-              <div key={`b${i}`} className="min-h-[80px] border-b border-r border-[#d4af37]/10" />
+              <div key={`b${i}`} className="min-h-[80px] border-b border-r border-cyan-500/10" />
             ))}
 
             {days.map((day) => {
@@ -371,13 +371,13 @@ export default function CalendarPage() {
                     setShowForm(false);
                     setEditTarget(null);
                   }}
-                  className={`relative min-h-[80px] cursor-pointer border-b border-r border-[#d4af37]/10 p-2 transition-colors
-                    ${isSelected ? "bg-[#0b1c12] ring-inset ring-2 ring-[#d4af37]/40" : "hover:bg-[#0b1c12]"}
+                  className={`relative min-h-[80px] cursor-pointer border-b border-r border-cyan-500/10 p-2 transition-colors
+                    ${isSelected ? "bg-[#080816] ring-inset ring-2 ring-cyan-500/40" : "hover:bg-[#080816]"}
                   `}
                 >
                   <span
                     className={`flex h-7 w-7 items-center justify-center rounded-full text-sm font-medium
-                      ${isToday ? "bg-[#d4af37] text-[#06180d]" : isSelected ? "text-[#d4af37] font-bold" : "text-[#f5f0e8]"}
+                      ${isToday ? "bg-cyan-500 text-slate-950" : isSelected ? "text-cyan-400 font-bold" : "text-white"}
                     `}
                   >
                     {day.date()}
@@ -388,13 +388,13 @@ export default function CalendarPage() {
                     {dayEvents.slice(0, 3).map((ev) => (
                       <span
                         key={ev.id}
-                        className={`truncate rounded px-1 py-0.5 text-[10px] font-medium leading-tight text-[#06180d] ${TYPE_META[ev.type]?.color ?? "bg-[#a08c4a]"}`}
+                        className={`truncate rounded px-1 py-0.5 text-[10px] font-medium leading-tight text-white ${TYPE_META[ev.type]?.color ?? "bg-purple-500"}`}
                       >
                         {ev.title}
                       </span>
                     ))}
                     {dayEvents.length > 3 && (
-                      <span className="text-[10px] text-[#a08c4a]">
+                      <span className="text-[10px] text-cyan-400">
                         +{dayEvents.length - 3} more
                       </span>
                     )}
@@ -411,7 +411,7 @@ export default function CalendarPage() {
           <div className="glass-card p-5">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-xs font-semibold uppercase tracking-wide text-[#a08c4a]">
+                <p className="text-xs font-semibold uppercase tracking-wide text-cyan-400">
                   Selected day
                 </p>
                 <p className="mt-0.5 text-xl font-bold text-white">
@@ -420,7 +420,7 @@ export default function CalendarPage() {
               </div>
               <button
                 onClick={openAdd}
-                className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#d4af37] text-[#06180d] shadow hover:bg-[#f3d76b] transition"
+                className="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-r from-cyan-400 to-purple-600 hover:from-cyan-300 hover:to-purple-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.35)] transition"
                 title="Add event"
               >
                 <Plus className="h-5 w-5" />
@@ -437,7 +437,7 @@ export default function CalendarPage() {
                 </p>
                 <button
                   onClick={() => { setShowForm(false); setEditTarget(null); }}
-                  className="rounded-lg p-1 text-[#a08c4a] hover:bg-white/5"
+                  className="rounded-lg p-1 text-slate-400 hover:bg-white/5"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -453,7 +453,7 @@ export default function CalendarPage() {
 
           {/* events list */}
           <div className="glass-card flex-1 p-5">
-            <p className="mb-3 text-sm font-semibold text-[#f5f0e8]">
+            <p className="mb-3 text-sm font-semibold text-slate-200">
               {selectedEvents.length > 0
                 ? `${selectedEvents.length} event${selectedEvents.length > 1 ? "s" : ""}`
                 : "No events"}
@@ -461,12 +461,12 @@ export default function CalendarPage() {
 
             {loading ? (
               <div className="flex justify-center py-8">
-                <div className="h-6 w-6 animate-spin rounded-full border-4 border-[#d4af37]/30 border-t-[#d4af37]" />
+                <div className="h-6 w-6 animate-spin rounded-full border-4 border-cyan-500/30 border-t-cyan-500" />
               </div>
             ) : selectedEvents.length === 0 ? (
               <div className="flex flex-col items-center gap-2 py-8 text-center">
-                <CalendarDays className="h-8 w-8 text-[#a08c4a]" />
-                <p className="text-sm text-[#b6a66d]">
+                <CalendarDays className="h-8 w-8 text-cyan-400" />
+                <p className="text-sm text-slate-400">
                   Nothing planned. Hit <strong>+</strong> to add an event.
                 </p>
               </div>
@@ -487,7 +487,7 @@ export default function CalendarPage() {
                 {selectedEvents.some((e) => e.type === "interview") && (
                   <button
                     onClick={() => router.push("/dashboard#new-interview")}
-                    className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl border border-[#d4af37]/30 bg-[#d4af37]/10 py-2 text-sm font-medium text-[#d4af37] hover:bg-[#d4af37]/20 transition"
+                    className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl border border-cyan-500/30 bg-cyan-500/10 py-2 text-sm font-medium text-cyan-400 hover:bg-cyan-500/20 transition"
                   >
                     <CheckCircle2 className="h-4 w-4" />
                     Start a mock interview now
@@ -498,7 +498,7 @@ export default function CalendarPage() {
                 {selectedEvents.some((e) => e.type === "peer") && (
                   <button
                     onClick={() => router.push("/dashboard/peer")}
-                    className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl border border-[#f3d76b]/30 bg-[#f3d76b]/10 py-2 text-sm font-medium text-[#f3d76b] hover:bg-[#f3d76b]/20 transition"
+                    className="mt-2 flex w-full items-center justify-center gap-2 rounded-xl border border-indigo-500/30 bg-indigo-500/10 py-2 text-sm font-medium text-indigo-400 hover:bg-indigo-500/20 transition"
                   >
                     <Video className="h-4 w-4" />
                     Open Peer Lobby
@@ -510,16 +510,16 @@ export default function CalendarPage() {
 
           {/* legend */}
           <div className="glass-card p-4">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-[#a08c4a]">
+            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-cyan-400">
               Legend
             </p>
             <div className="flex flex-col gap-1.5">
               {Object.entries(TYPE_META).map(([key, meta]) => {
                 const Icon = meta.icon;
                 return (
-                  <div key={key} className="flex items-center gap-2 text-xs text-[#b6a66d]">
+                  <div key={key} className="flex items-center gap-2 text-xs text-slate-400">
                     <span className={`h-2.5 w-2.5 rounded-full ${meta.color}`} />
-                    <Icon className="h-3.5 w-3.5 text-[#a08c4a]" />
+                    <Icon className="h-3.5 w-3.5 text-slate-400" />
                     {meta.label}
                   </div>
                 );

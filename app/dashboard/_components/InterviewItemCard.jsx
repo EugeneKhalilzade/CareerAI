@@ -16,10 +16,10 @@ function InterviewItemCard({ interviewInfo }) {
   return (
     <div className="glass-card p-5">
       <h2 className="line-clamp-2 text-lg font-semibold text-white">{interviewInfo?.jobPosition}</h2>
-      <p className="mt-2 text-sm text-[#b6a66d]">
+      <p className="mt-2 text-sm text-slate-400">
         {interviewInfo?.jobExperience} years experience
       </p>
-      <p className="mt-1 flex items-center gap-1 text-xs text-[#a08c4a]">
+      <p className="mt-1 flex items-center gap-1 text-xs text-cyan-500/70">
         <CalendarClock className="h-3.5 w-3.5" />
         Created on {interviewInfo.createdAt}
       </p>
@@ -27,12 +27,12 @@ function InterviewItemCard({ interviewInfo }) {
         <Button
           size="sm"
           variant="outline"
-          className="w-full border-[#d4af37]/40 text-[#d4af37] hover:bg-[#d4af37]/10"
+          className="w-full border-cyan-500/40 text-cyan-400 hover:bg-cyan-500/10 hover:border-cyan-400"
           onClick={onFeedback}
         >
           View Feedback
         </Button>
-        <Button size="sm" className="w-full bg-[#d4af37] text-[#06180d] hover:bg-[#f3d76b]" onClick={onStart}>
+        <Button size="sm" className="w-full bg-gradient-to-r from-cyan-400 to-purple-600 hover:from-cyan-300 hover:to-purple-500 text-white shadow-[0_0_15px_rgba(6,182,212,0.35)] border-0" onClick={onStart}>
           Open Session
         </Button>
       </div>
