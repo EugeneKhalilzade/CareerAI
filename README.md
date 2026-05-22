@@ -12,7 +12,8 @@ CareerAI is an AI-powered mock interview platform designed to help job seekers p
 - **Voice-Based Practice** – Answer questions using your microphone to simulate real interview pressure
 - **Instant AI Feedback** – Receive detailed ratings, ideal answers, and specific improvement suggestions
 - **Interview History** – Track previous interviews and review your progress over time
-- **Modern UI** – Clean, responsive design with a purple/cyan gradient theme
+- **Resume Tailor** – Tailor your resume to specific job descriptions using AI, with copy and multi-format export (TXT, PDF, DOCX)
+- **Modern UI** – Clean, responsive design with dark theme and gold accents
 
 ---
 
@@ -109,6 +110,13 @@ Visit **http://localhost:3000** (or 3001 if 3000 is in use) in your browser.
    - View all previous interviews on your dashboard
    - Monitor improvement over time
 
+### 6. **Tailor Your Resume**
+   - Go to Dashboard → "Tailor Resume"
+   - Upload your resume or paste the text
+   - Provide the target job description
+   - Click "Tailor with AI" to generate an optimized resume
+   - **Copy** the result to clipboard or **Export** in multiple formats (TXT, PDF, or DOCX)
+
 ---
 
 ## 🏗️ Project Structure
@@ -148,15 +156,15 @@ ai-mock-interview-master/
 ## 🎨 Design System
 
 ### Colors
-- **Primary**: Purple (`#7c3aed`)
-- **Accent**: Cyan (`#06b6d4`)
-- **Background**: Light Blue (`#f0f9ff`)
-- **Glass Card**: Semi-transparent white with backdrop blur
+- **Primary**: Gold (`#d4af37`) with bright gold (`#f3d76b`)
+- **Background**: Dark forest green (`#06180d`)
+- **Text**: Light cream (`#f5f0e8`)
+- **Glass Card**: Dark green with gold borders (`bg-[#0d2a18]/80, border-[#d4af37]/15`)
 
 ### Key Utilities
 - `.page-shell` – Centered container with responsive padding
-- `.glass-card` – Modern frosted glass effect card
-- `.brand-highlight` – Gradient text for the "A" in CareerAI
+- `.glass-card` – Modern frosted glass effect card with dark theme
+- `.brand-highlight` – Gradient text for CareerAI
 
 ---
 

@@ -73,12 +73,12 @@ function PricingModal({ open, onClose, dismissible = true }) {
         className="absolute inset-0 bg-slate-950/40 backdrop-blur-sm"
         onClick={closeModal}
       />
-      <div className="relative z-10 max-h-[92vh] w-full max-w-6xl overflow-y-auto rounded-3xl border border-slate-200 bg-white p-5 shadow-2xl sm:p-8">
+      <div className="relative z-10 max-h-[92vh] w-full max-w-6xl overflow-y-auto rounded-3xl border border-[#d4af37]/20 bg-[#071109] p-5 shadow-2xl sm:p-8">
         {dismissible && (
           <button
             type="button"
             onClick={closeModal}
-            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-white text-slate-700 shadow-sm transition hover:opacity-90"
+            className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full bg-[#0d2a18] text-[#b6a66d] shadow-sm transition hover:text-white"
             aria-label="Close pricing modal"
           >
             <X className="h-5 w-5" />
@@ -86,17 +86,17 @@ function PricingModal({ open, onClose, dismissible = true }) {
         )}
 
         <div className="mx-auto max-w-2xl text-center">
-          <span className="inline-flex rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
+          <span className="inline-flex rounded-full bg-[#d4af37] px-3 py-1 text-xs font-semibold text-[#06180d]">
             Simple pricing
           </span>
-          <h2 className="mt-4 text-3xl font-bold text-slate-900 sm:text-4xl">
+          <h2 className="mt-4 text-3xl font-bold text-white sm:text-4xl">
             Choose the right plan for your career growth
           </h2>
-          <p className="mt-3 text-sm text-slate-600">
+          <p className="mt-3 text-sm text-[#b6a66d]">
             Practice smarter and boost your confidence with AI-powered interviews.
           </p>
 
-          <div className="mt-6 inline-flex rounded-full bg-slate-100 p-1">
+          <div className="mt-6 inline-flex rounded-full border border-[#d4af37]/10 bg-white/[0.04] p-1">
             {["monthly", "yearly"].map((value) => (
               <button
                 key={value}
@@ -104,8 +104,8 @@ function PricingModal({ open, onClose, dismissible = true }) {
                 onClick={() => setBilling(value)}
                 className={`rounded-full px-4 py-2 text-xs font-semibold capitalize transition ${
                   billing === value
-                    ? "bg-white text-slate-900 shadow-sm"
-                    : "text-slate-500 hover:text-slate-900"
+                    ? "bg-[#0d2a18] text-white shadow-sm"
+                    : "text-[#b6a66d] hover:text-[#f3d76b]"
                 }`}
               >
                 {value}
@@ -118,28 +118,28 @@ function PricingModal({ open, onClose, dismissible = true }) {
           {plans.map((plan) => (
             <div
               key={plan.name}
-              className={`relative rounded-2xl bg-white p-6 shadow-sm ${
+              className={`relative rounded-2xl bg-[#0d2a18]/80 p-6 shadow-[0_24px_70px_rgba(0,0,0,0.28)] ${
                 plan.featured
-                  ? "border-2 border-slate-900 shadow-slate-900/10"
-                  : "border border-slate-200"
+                  ? "border-2 border-[#d4af37]"
+                  : "border border-[#d4af37]/15"
               }`}
             >
               {plan.featured && (
-                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-slate-900 px-3 py-1 text-xs font-semibold text-white">
+                <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#d4af37] px-3 py-1 text-xs font-semibold text-[#06180d]">
                   Best Value
                 </span>
               )}
-              <h3 className="text-lg font-bold text-slate-900">{plan.name}</h3>
+              <h3 className="text-lg font-bold text-white">{plan.name}</h3>
               <div className="mt-2 flex items-end gap-1">
-                <span className="text-3xl font-bold text-slate-900">{plan.price}</span>
-                <span className="pb-1 text-sm text-slate-500">/{billing === "monthly" ? "mo" : "yr"}</span>
+                <span className="text-3xl font-bold text-white">{plan.price}</span>
+                <span className="pb-1 text-sm text-[#b6a66d]">/{billing === "monthly" ? "mo" : "yr"}</span>
               </div>
-              <p className="mt-3 min-h-12 text-sm leading-6 text-slate-600">{plan.description}</p>
+              <p className="mt-3 min-h-12 text-sm leading-6 text-[#b6a66d]">{plan.description}</p>
 
               <ul className="mt-5 space-y-3">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-start gap-2 text-sm text-slate-700">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-teal-600" />
+                  <li key={feature} className="flex items-start gap-2 text-sm text-[#f5f0e8]">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-[#d4af37]" />
                     {feature}
                   </li>
                 ))}
@@ -151,10 +151,10 @@ function PricingModal({ open, onClose, dismissible = true }) {
                 onClick={plan.featured ? upgradeToPro : undefined}
                 className={`mt-6 w-full rounded-full px-4 py-3 text-sm font-semibold transition ${
                   plan.featured
-                    ? "bg-slate-900 text-white hover:bg-slate-800"
+                    ? "bg-[#d4af37] text-[#06180d] hover:bg-[#f3d76b]"
                     : plan.current
-                      ? "cursor-not-allowed bg-slate-100 text-slate-400"
-                      : "border border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white"
+                      ? "cursor-not-allowed bg-white/10 text-white/40"
+                      : "border border-[#d4af37] text-[#d4af37] hover:bg-[#d4af37]/10"
                 }`}
               >
                 {loading && plan.featured ? "Opening checkout..." : plan.cta}

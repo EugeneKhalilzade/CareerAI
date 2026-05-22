@@ -33,7 +33,7 @@ export default function PeerRoom({ params }) {
   if (!isLoaded) {
     return (
       <div className="flex h-[60vh] items-center justify-center">
-        <div className="h-8 w-8 animate-spin rounded-full border-4 border-cyan-200 border-t-cyan-600" />
+        <div className="h-8 w-8 animate-spin rounded-full border-4 border-[#d4af37]/30 border-t-[#d4af37]" />
       </div>
     );
   }
@@ -51,13 +51,13 @@ export default function PeerRoom({ params }) {
             variant="ghost"
             size="sm"
             onClick={() => router.push("/dashboard/peer")}
-            className="text-slate-600 hover:text-slate-900"
+            className="text-[#b6a66d] hover:text-white"
           >
             <ArrowLeft className="mr-2 h-4 w-4" /> Leave Room
           </Button>
-          <div className="hidden sm:block h-6 w-px bg-slate-200" />
-          <h2 className="hidden sm:block font-bold text-slate-800">
-            Room: <span className="text-slate-500 font-mono text-sm">{roomId}</span>
+          <div className="hidden sm:block h-6 w-px bg-[#d4af37]/20" />
+          <h2 className="hidden sm:block font-bold text-white">
+            Room: <span className="text-[#a08c4a] font-mono text-sm">{roomId}</span>
           </h2>
         </div>
 
@@ -65,11 +65,11 @@ export default function PeerRoom({ params }) {
           variant="outline"
           size="sm"
           onClick={handleCopyLink}
-          className="border-cyan-200 bg-cyan-50 text-cyan-700 hover:bg-cyan-100 transition rounded-full px-4"
+          className="border-[#d4af37]/40 bg-[#d4af37]/10 text-[#d4af37] hover:bg-[#d4af37]/20 transition rounded-full px-4"
         >
           {copied ? (
             <>
-              <CheckCheck className="mr-2 h-4 w-4 text-emerald-500" /> Link Copied
+              <CheckCheck className="mr-2 h-4 w-4 text-emerald-300" /> Link Copied
             </>
           ) : (
             <>
@@ -80,7 +80,7 @@ export default function PeerRoom({ params }) {
       </div>
 
       {/* Jitsi Video Area */}
-      <div className="flex-1 rounded-2xl overflow-hidden shadow-xl border border-slate-200 bg-slate-900 relative">
+      <div className="flex-1 rounded-2xl overflow-hidden shadow-xl border border-[#d4af37]/20 bg-slate-900 relative">
         <JitsiMeeting
           domain="meet.jit.si"
             roomName={`CareerAI-Peer-${roomId}`}

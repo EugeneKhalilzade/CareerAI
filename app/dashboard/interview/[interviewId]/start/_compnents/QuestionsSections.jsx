@@ -20,7 +20,7 @@ function QuestionsSections({
 
   if (questions.length === 0) {
     return (
-      <div className="glass-card p-6 text-sm text-slate-700">
+      <div className="glass-card p-6 text-sm text-[#b6a66d]">
         No interview questions available for this session.
       </div>
     );
@@ -36,8 +36,8 @@ function QuestionsSections({
               onClick={() => setActiveQuestionIndex(index)}
               className={`rounded-full border px-3 py-1.5 text-xs font-medium transition md:text-sm ${
                 activeQuestionIndex == index
-                  ? "border-primary bg-primary text-white"
-                  : "border-slate-200 bg-white text-slate-700 hover:border-primary/40"
+                  ? "border-[#d4af37] bg-[#d4af37] text-[#06180d]"
+                  : "border-[#d4af37]/20 bg-[#0b1c12] text-[#b6a66d] hover:border-[#d4af37]/60 hover:text-[#f3d76b]"
               }`}
             >
               Q{index + 1}
@@ -46,24 +46,24 @@ function QuestionsSections({
         </div>
 
         <div className="mt-6 flex items-start justify-between gap-3">
-          <h2 className="text-base font-semibold leading-7 text-slate-900 md:text-lg">
+          <h2 className="text-base font-semibold leading-7 text-white md:text-lg">
             {questions[activeQuestionIndex]?.question}
           </h2>
           <button
             onClick={() => textToSpeach(questions[activeQuestionIndex]?.question)}
-            className="rounded-full border border-slate-200 bg-white p-2 transition hover:border-primary/40 hover:text-primary"
+            className="rounded-full border border-[#d4af37]/20 bg-[#0b1c12] p-2 text-[#d4af37] transition hover:border-[#d4af37]/60 hover:bg-[#d4af37]/10"
             aria-label="Read question aloud"
           >
             <Volume2 className="h-5 w-5" />
           </button>
         </div>
 
-        <div className="mt-8 rounded-xl border border-blue-200 bg-blue-50 p-4">
-          <h2 className="flex items-center gap-2 font-semibold text-blue-800">
-            <Lightbulb className="h-5 w-5" />
+        <div className="mt-8 rounded-xl border border-[#d4af37]/20 bg-[#0b1c12] p-4">
+          <h2 className="flex items-center gap-2 font-semibold text-[#f5f0e8]">
+            <Lightbulb className="h-5 w-5 text-[#d4af37]" />
             Note
           </h2>
-          <h2 className="mt-2 text-sm leading-6 text-blue-800">
+          <h2 className="mt-2 text-sm leading-6 text-[#b6a66d]">
             {process.env.NEXT_PUBLIC_QUESTION_NOTE}
           </h2>
         </div>

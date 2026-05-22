@@ -101,8 +101,8 @@ function AddNewInterview() {
       >
         <PlusCircle className="h-8 w-8 text-primary" />
         <div>
-          <h2 className="text-lg font-semibold text-slate-900">Start a new mock interview</h2>
-          <p className="mt-1 text-sm text-slate-600">
+          <h2 className="text-lg font-semibold text-white">Start a new mock interview</h2>
+          <p className="mt-1 text-sm text-[#b6a66d]">
             Create a role-focused session in seconds and begin practicing immediately.
           </p>
         </div>
@@ -110,19 +110,19 @@ function AddNewInterview() {
       <Dialog open={openDialog} onOpenChange={setOpenDialog}>
         <DialogContent className="max-w-2xl">
           <DialogHeader>
-            <DialogTitle className="text-2xl">
+            <DialogTitle className="text-2xl text-white">
               Build your interview session
             </DialogTitle>
             <DialogDescription>
               <form onSubmit={onSubmit}>
                 <div className="space-y-4">
-                  <h2 className="text-sm text-slate-600">
+                  <h2 className="text-sm text-[#b6a66d]">
                     Add your target role details so CareerAI can generate relevant
                     questions and expected answers.
                   </h2>
 
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-800">Job Role / Position</label>
+                    <label className="text-sm font-medium text-[#f5f0e8]">Job Role / Position</label>
                     <Input
                       value={jobPosition}
                       onChange={(event) => setJobPosition(event.target.value)}
@@ -131,7 +131,7 @@ function AddNewInterview() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-800">
+                    <label className="text-sm font-medium text-[#f5f0e8]">
                       Job Description / Tech Stack
                     </label>
                     <Textarea
@@ -142,7 +142,7 @@ function AddNewInterview() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-800">Years of experience</label>
+                    <label className="text-sm font-medium text-[#f5f0e8]">Years of experience</label>
                     <Input
                       value={jobExperience}
                       onChange={(event) => setJobExperience(event.target.value)}
@@ -154,7 +154,7 @@ function AddNewInterview() {
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-medium text-slate-800">
+                    <label className="text-sm font-medium text-[#f5f0e8]">
                       Resume (optional)
                     </label>
                     <Input
@@ -163,7 +163,7 @@ function AddNewInterview() {
                       onChange={handleResumeUpload}
                     />
                     {resumeFileName ? (
-                      <p className="text-xs text-slate-500">Loaded: {resumeFileName}</p>
+                      <p className="text-xs text-[#a08c4a]">Loaded: {resumeFileName}</p>
                     ) : null}
                     <Textarea
                       value={resumeText}
@@ -179,6 +179,7 @@ function AddNewInterview() {
                     type="button"
                     variant="ghost"
                     onClick={() => setOpenDialog(false)}
+                    className="text-[#b6a66d] hover:text-white"
                   >
                     Cancel
                   </Button>

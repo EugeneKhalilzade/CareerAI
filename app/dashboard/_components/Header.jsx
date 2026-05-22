@@ -16,11 +16,11 @@ function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-20 border-b border-slate-200/70 bg-white/80 backdrop-blur">
+    <header className="sticky top-0 z-20 border-b border-[#d4af37]/15 bg-[#071109]/80 backdrop-blur-xl">
       <div className="page-shell flex h-20 items-center justify-between">
         <div className="flex items-center gap-6">
           <BrandLogo href="/dashboard" showTagline />
-          <nav className="hidden items-center gap-1 rounded-full bg-slate-100/80 p-1 md:flex">
+          <nav className="hidden items-center gap-1 rounded-full border border-[#d4af37]/10 bg-white/[0.04] p-1 md:flex">
             {navItems.map((item) => {
               const active = path === item.href;
               return (
@@ -29,8 +29,8 @@ function Header() {
                   href={item.href}
                   className={`rounded-full px-3 py-1.5 text-sm font-medium transition ${
                     active
-                      ? "bg-white text-slate-900 shadow-sm"
-                      : "text-slate-600 hover:text-slate-900"
+                      ? "bg-[#0d2a18] text-white shadow-[0_0_20px_rgba(212,175,55,0.12)]"
+                      : "text-[#b6a66d] hover:text-[#f3d76b]"
                   }`}
                 >
                   {item.label}
@@ -41,7 +41,10 @@ function Header() {
         </div>
         <div className="flex items-center gap-3">
           <Link href="/dashboard#new-interview">
-            <Button size="sm" className="hidden rounded-full md:inline-flex">
+            <Button
+              size="sm"
+              className="hidden rounded-full bg-[#d4af37] text-[#06180d] hover:bg-[#f3d76b] md:inline-flex"
+            >
               New Interview
             </Button>
           </Link>
